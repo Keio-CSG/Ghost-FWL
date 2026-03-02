@@ -6,13 +6,14 @@
   
   <!-- Primary Meta Tags -->
   <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
+  <meta name="title" content="Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal - Kazuma Ikeda, Ryosei Hara, Rokuto Nagata, Ozora Sako, Zihao Ding, Takahiro Kado, Ibuki Fujioka, Taro Beppu, Mariko Isogawa, Kentaro Yoshioka">
+
   <!-- TODO: Write a compelling 150-160 character description of your research -->
   <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
   <!-- TODO: Add 5-10 relevant keywords for your research area -->
   <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
   <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="author" content="Kazuma Ikeda, Ryosei Hara, Rokuto Nagata, Ozora Sako, Zihao Ding, Takahiro Kado, Ibuki Fujioka, Taro Beppu, Mariko Isogawa, Kentaro Yoshioka">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
   
@@ -53,8 +54,16 @@
 
   <!-- Academic/Research Specific -->
   <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_author" content="Ikeda, Kazuma">
+  <meta name="citation_author" content="Hara, Ryosei">
+  <meta name="citation_author" content="Nagata, Rokuto">
+  <meta name="citation_author" content="Sako, Ozora">
+  <meta name="citation_author" content="Ding, Zihao">
+  <meta name="citation_author" content="Kado, Takahiro">
+  <meta name="citation_author" content="Fujioka, Ibuki">
+  <meta name="citation_author" content="Beppu, Taro">
+  <meta name="citation_author" content="Isogawa, Mariko">
+  <meta name="citation_author" content="Yoshioka, Kentaro">
   <meta name="citation_publication_date" content="2024">
   <meta name="citation_conference_title" content="CONFERENCE_NAME">
   <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
@@ -74,7 +83,7 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
+  <title>Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal - Kazuma Ikeda, Ryosei Hara, Rokuto Nagata, Ozora Sako, Zihao Ding, Takahiro Kado, Ibuki Fujioka, Taro Beppu, Mariko Isogawa, Kentaro Yoshioka | Academic Research</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
@@ -83,6 +92,7 @@
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/custom.css">
   
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -117,28 +127,19 @@
     "headline": "PAPER_TITLE",
     "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
     "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
+      { "@type": "Person", "name": "Kazuma Ikeda", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Ryosei Hara", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Rokuto Nagata", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Ozora Sako", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Zihao Ding", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Takahiro Kado", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Ibuki Fujioka", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Taro Beppu", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Mariko Isogawa", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
+      { "@type": "Person", "name": "Kentaro Yoshioka", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } }
     ],
     "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
+    "publisher": { "@type": "Organization", "name": "CONFERENCE_OR_JOURNAL_NAME" },
     "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
     "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
     "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
@@ -146,19 +147,10 @@
     "citation": "BIBTEX_CITATION_HERE",
     "isAccessibleForFree": true,
     "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
+    "mainEntity": { "@type": "WebPage", "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE" },
     "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
+      { "@type": "Thing", "name": "RESEARCH_AREA_1" },
+      { "@type": "Thing", "name": "RESEARCH_AREA_2" }
     ]
   }
   </script>
@@ -241,57 +233,63 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal</h1>
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+              <span class="author-block">Kazuma Ikeda<sup>*,1</sup>,</span>
+              <span class="author-block">Ryosei Hara<sup>*,1</sup>,</span>
+
+              <!-- ↓ここを各著者の所属に合わせて 1 / 2 / 1,2 に変更 -->
+              <span class="author-block">Rokuto Nagata<sup>1</sup>,</span>
+              <span class="author-block">Ozora Sako<sup>2</sup>,</span>
+              <span class="author-block">Zihao Ding<sup>2</sup>,</span>
+              <span class="author-block">Takahiro Kado<sup>2</sup>,</span>
+              <span class="author-block">Ibuki Fujioka<sup>2</sup>,</span>
+              <span class="author-block">Taro Beppu<sup>2</sup>,</span>
+              <span class="author-block">Mariko Isogawa<sup>2</sup>,</span>
+              <span class="author-block">Kentaro Yoshioka<sup>2</sup></span>
+            </div>
+
+           <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <sup>1</sup>Keio University&nbsp;&nbsp;
+              <sup>2</sup>Sony Semiconductor Solutions<br>
+              CVPR 2026
+            </span>
+            <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+          </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                    <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
                   </span>
-                  </div>
+                  <span>Paper</span>
+                  </a>
+                </span>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
+                <!-- TODO: Add your supplementary material PDF or remove this section -->
+                <span class="link-block">
+                  <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
                   </span>
+                  <span>Supplementary</span>
+                  </a>
+                </span>
 
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
+                <!-- TODO: Replace with your GitHub repository URL -->
+                <span class="link-block">
+                  <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
                   </a>
                 </span>
 
@@ -303,8 +301,8 @@
                     <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
-                </a>
-              </span>
+                  </a>
+                </span>
             </div>
           </div>
         </div>
@@ -319,13 +317,20 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
+      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
+        <source src="static/videos/cvpr2026_ghostFWL.mp4" type="video/mp4">
+      </video> -->
       <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      
+      <div class="image is-fullwidth">
+        <img src="static/images/dataset.png" alt="Dataset overview figure" class="dataset-figure" loading="lazy">
+      </div>
+      <h2 class="subtitle has-text-left">
+        <strong>Overview of the Ghost-FWL.</strong>
+        Left: Our dataset includes both indoor and outdoor scenes. Based on the dense 3D maps as shown in Scene, we annotated FWL data with semantic labels:
+        <em>Ghost</em> (red), <em>Object</em> (green), <em>Glass</em> (blue), <em>Noise</em>. Gray regions are excluded from annotation.
+        Right shows the data acquisition setup and dataset statistics, including the incident angle distribution and LiDAR positions examples.
+        Data were collected at three different times of day: Morning (AM10&ndash;12), Daytime (PM12&ndash;5), and Evening (PM5&ndash;7).
       </h2>
     </div>
   </div>
@@ -333,16 +338,24 @@
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              LiDAR has become an essential sensing modality in autonomous driving, robotics, and smart-city applications.
+              However, ghost points (or <strong>ghost</strong>), which are false reflections caused by multi-path laser returns from glass and reflective surfaces, severely degrade 3D mapping and localization accuracy.
+              Prior ghost removal relies on geometric consistency in dense point clouds, failing on mobile LiDAR's sparse, dynamic data.
+              We address this by exploiting full-waveform LiDAR (FWL), which captures complete temporal intensity profiles rather than just peak distances, providing crucial cues for distinguishing ghosts from genuine reflections in mobile scenarios.
+              As this is a new task, we present Ghost-FWL, the first and largest annotated mobile FWL dataset for ghost detection and removal.
+              Ghost-FWL comprises 24K frames across 10 diverse scenes with 7.5 billion peak-level annotations, which is 100&times; larger than existing annotated FWL datasets.
+            </p>
+          </div>
+
         </div>
       </div>
     </div>
@@ -350,36 +363,239 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Paper dataset -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Dataset</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              This section presents Ghost-FWL, the largest FWL dataset to date, which is specialized for ghost removal.
+              Conventional LiDAR datasets provide only point cloud-level information, discarding the temporal multi-path information crucial for identifying ghosts caused by glass and reflective surfaces.
+              Ghost-FWL addresses this gap by capturing complete temporal intensity histograms and providing peak-level annotations indicating the physical cause of each reflection (object, glass, ghost, or noise).
+              Spanning 10 diverse scenes with 24,412 annotated frames and 7.5B peak-level labels, Ghost-FWL is 100&times; larger than prior annotated FWL datasets
+              <a href="https://light.princeton.edu/publication/lidar-transformers/">[Scheuble et al.]</a>, enabling learning-based ghost detection and removal at the waveform level.
+            </p>
+
+            <div id="tab-fwldataset-comparison" class="fwltable-card">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-fullwidth fwltable__table">
+                  <caption class="fwltable__caption">
+                    <strong>Comparison of LiDAR real-world datasets for ghost detection and/or full-waveform analysis.</strong>
+                    Our Ghost-FWL contains mobile LiDAR full-waveform measurements and is one hundred times larger than prior work,
+                    making it the largest annotated FWL dataset.
+                  </caption>
+
+                  <colgroup>
+                    <col class="col-dataset">
+                    <col class="col-year">
+                    <col class="col-public">
+                    <col class="col-platform">
+                    <col class="col-fwl">
+                    <col class="col-dim">
+                    <col class="col-ray">
+                    <col class="col-ghost">
+                    <col class="col-fwldata">
+                    <col class="col-frames">
+                    <col class="col-peaks">
+                  </colgroup>
+
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th colspan="3" class="has-text-centered"><strong>Access &amp; Platform</strong></th>
+                      <th colspan="3" class="has-text-centered"><strong>Sensor</strong></th>
+                      <th colspan="4" class="has-text-centered"><strong>Labels</strong></th>
+                    </tr>
+                    <tr>
+                      <th><strong>Dataset</strong></th>
+                      <th>Year</th>
+                      <th>Public</th>
+                      <th>Platform</th>
+                      <th>FWL</th>
+                      <th>LiDAR<br>Dim.</th>
+                      <th>Ray<br>Den.</th>
+                      <th>Ghost</th>
+                      <th>FWL<br>Data</th>
+                      <th>Frames/<br>Scenes<sup>†</sup></th>
+                      <th>Annotated<br>Peaks</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>UNIST <a href="#ref-yun2019virtual">[1]</a></td>
+                      <td>2017</td><td>✓</td><td>Stationary</td><td>✗</td><td>3D</td><td>278</td><td>✓</td><td>✗</td><td>--</td><td>--</td>
+                    </tr>
+                    <tr>
+                      <td>Leddar PixSet <a href="#ref-deziel2021pixset">[2]</a></td>
+                      <td>2021</td><td>✓</td><td>Mobile</td><td><strong>✓</strong></td><td>3D</td><td>0.267</td><td>✗</td><td>✓</td><td>--</td><td>--</td>
+                    </tr>
+                    <tr>
+                      <td>Lee et al. <a href="#ref-lee2023learning">[3]</a></td>
+                      <td>2023</td><td>✗</td><td>Stationary</td><td>✗</td><td>3D</td><td>278</td><td>✗</td><td>✗</td><td>--</td><td>--</td>
+                    </tr>
+                    <tr>
+                      <td>FRACTAL <a href="#ref-gaydon2024fractal">[4]</a></td>
+                      <td>2024</td><td>✓</td><td>Aerial</td><td>✗</td><td>2D</td><td>--</td><td>✗</td><td>✗</td><td>--</td><td>--</td>
+                    </tr>
+                    <tr>
+                      <td>Scheuble et al. <a href="#ref-scheublelidar">[5]</a></td>
+                      <td>2025</td><td>✗</td><td>Mobile</td><td>✓</td><td>3D</td><td>2.56</td><td>✗</td><td>✓</td><td>0.24k / 2</td><td>NA</td>
+                    </tr>
+
+                    <tr class="fwltable__divider"><td colspan="11"></td></tr>
+
+                    <tr>
+                      <td><strong>Ghost-FWL (Ours)</strong></td>
+                      <td><strong>2025</strong></td><td>✓</td><td><strong>Mobile</strong></td><td><strong>✓</strong></td>
+                      <td><strong>3D</strong></td><td><strong>200</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td>
+                      <td><strong>24k / 10</strong></td><td><strong>7.5B</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="fwltable__note">
+                FWL: Full-Waveform LiDAR.
+                <sup>†</sup>Frames/Scenes: number of annotated frames and number of scenes within the real-world FWL data.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper dataset -->
+
+<!-- Paper method -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              Given FWL data, our framework predicts and removes ghost-related signals. Our model consists of a transformer-based encoder and an MLP head.
+              We further introduce FWL-MAE, a masked autoencoder designed for representation learning on FWL data, explicitly trained to reconstruct peak
+              <em>position</em>, <em>amplitude</em>, and <em>width</em>.
+              The ghosts detected by our model are then removed from FWL data, and the cleaned data are utilized for downstream tasks such as SLAM and 3D object detection.
+            </p>
+
+            <div class="image is-fullwidth">
+              <img src="static/images/method.png" alt="Method overview figure" class="method-figure" loading="lazy">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper method -->
+
+<!-- Paper result -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified">
+            <h3 class="title is-5">Classification</h3>
+            <p>
+              
+            </p>
+            <div class="image" style="width:70%; margin: 0 auto;">
+              <img src="static/images/classification_result.png" alt="Classification results figure" loading="lazy">
+            </div>
+
+            <h3 class="title is-5">SLAM</h3>
+            <p>
+              Trajectory and mapping generated by SLAM using Multi-Peak processing (left) and our ghost removal method (right).
+              Multi-Peak processing includes numerous ghost points in the reconstructed map, leading to trajectory drift.
+              The proposed method yields a trajectory that more closely follows the ground-truth path (white) by effectively removing ghost artifacts.
+            </p>
+
+            <h3 class="title is-5" style="margin-top: 1.25rem;">3D Object Detection</h3>
+            <p>
+              Qualitative evaluation of 3D object detection with Multi-Peak processing (left) and our ghost removal (right).
+              Green bounding boxes indicate persons. With Multi-Peak, a ghost person is detected behind the glass wall,
+              whereas our method suppresses this false detection.
+            </p>
+            <!-- centered two-images -->
+             <div class="twofig-center">
+              <div class="columns is-variable is-4 is-centered is-vcentered is-gapless">
+                <div class="column is-6">
+                  <figure class="image is-fullwidth">
+                    <img src="static/images/detection.png" alt="Object detection results" class="object-detection-figure" loading="lazy">
+                  </figure>
+                </div>
+                <div class="column is-6">
+                  <figure class="image is-fullwidth">
+                    <img src="static/images/slam.png" alt="SLAM results" class="slam-figure" loading="lazy">
+                  </figure>
+                </div>
+              </div>
+
+              <!-- captions at the very bottom (left/right) -->
+              <div class="columns is-variable is-4 is-centered">
+                <div class="column is-6 has-text-centered">
+                  <p class="is-size-7" style="margin-top: .25rem;"><strong>Object Detection</strong></p>
+                </div>
+                <div class="column is-6 has-text-centered">
+                  <p class="is-size-7" style="margin-top: .25rem;"><strong>SLAM</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <span style="display:block; height: 1.5rem;"></span>
+
+            <div class="publication-video is-centered">
+              <video controls muted loop preload="metadata" style="width:100%; height:auto;">
+                <source src="static/videos/cvpr2026_ghostFWL.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper result -->
 
 <!-- Image carousel -->
-<section class="hero is-small">
+<!-- <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
-        <!-- TODO: Replace with your research result images -->
         <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
         <h2 class="subtitle has-text-centered">
           First image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
         <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
         <h2 class="subtitle has-text-centered">
           Second image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
         <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
         <h2 class="subtitle has-text-centered">
          Third image description.
        </h2>
      </div>
      <div class="item">
-      <!-- Your image here -->
       <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
       <h2 class="subtitle has-text-centered">
         Fourth image description.
@@ -388,64 +604,56 @@
   </div>
 </div>
 </div>
-</section>
+</section> -->
 <!-- End image carousel -->
 
 
 
 
 <!-- Youtube video -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
       <h2 class="title is-3">Video Presentation</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           
           <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
             <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End youtube video -->
 
 
 <!-- Video carousel -->
-<section class="hero is-small">
+<!-- <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Another Carousel</h2>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
           <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
             <source src="static/videos/carousel1.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
           <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
             <source src="static/videos/carousel2.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
           <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
             <source src="static/videos/carousel3.mp4" type="video/mp4">
           </video>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End video carousel -->
 
 
@@ -454,18 +662,18 @@
 
 
 <!-- Paper poster -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title">Poster</h2>
+      <h2 class="title">Poster</h2> -->
 
       <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+      <!-- <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
           </iframe>
         
       </div>
     </div>
-  </section>
+  </section> -->
 <!--End paper poster -->
 
 

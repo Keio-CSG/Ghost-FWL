@@ -1,0 +1,16 @@
+.twofig-center{
+  max-width: 900px;   /* 好みで 700〜1000px くらいに調整OK */
+  margin: 0 auto;     /* ブロック全体を中央寄せ */
+}
+
+.twofig-center .columns{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* 念のため中央寄せを強制 */
+.twofig-center{
+  max-width: 900px;   /* これは既に入れてる想定 */
+  margin-left: auto;
+  margin-right: auto;
+}
