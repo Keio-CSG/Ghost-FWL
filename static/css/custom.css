@@ -214,3 +214,17 @@ footer .has-text-centered,
 footer .has-text-justified {
   text-align: left !important;
 }
+
+/* Keep the top hero title/author area centered */
+#main-content .top-hero .column,
+#main-content .top-hero .title,
+#main-content .top-hero .publication-title,
+#main-content .top-hero .publication-authors,
+#main-content .top-hero .author-block,
+#main-content .top-hero .eql-cntrb,
+#main-content .top-hero .publication-links,
+#main-content .top-hero .has-text-centered,
+#main-content .top-hero p,
+#main-content .top-hero span {
+  text-align: center !important;
+}
