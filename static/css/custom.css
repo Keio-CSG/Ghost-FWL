@@ -182,3 +182,35 @@
     height: 280px;
   }
 }
+
+/* Keep textual content left-aligned across the page */
+#main-content h1,
+#main-content h2,
+#main-content h3,
+#main-content h4,
+#main-content h5,
+#main-content h6,
+#main-content p,
+#main-content li,
+#main-content th,
+#main-content td,
+#main-content .subtitle,
+#main-content .title,
+#main-content .content,
+#main-content .has-text-centered,
+#main-content .has-text-justified,
+footer h1,
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6,
+footer p,
+footer li,
+footer th,
+footer td,
+footer .content,
+footer .has-text-centered,
+footer .has-text-justified {
+  text-align: left !important;
+}
