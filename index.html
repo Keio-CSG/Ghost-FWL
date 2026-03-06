@@ -83,7 +83,7 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal - Kazuma Ikeda, Ryosei Hara, Rokuto Nagata, Ozora Sako, Zihao Ding, Takahiro Kado, Ibuki Fujioka, Taro Beppu, Mariko Isogawa, Kentaro Yoshioka | Academic Research</title>
+  <title>Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal - Kazuma Ikeda, Ryosei Hara, Rokuto Nagata, Ozora Sako, Zihao Ding, Takahiro Kado, Ibuki Fujioka, Taro Beppu, Mariko Isogawa, Kentaro Yoshioka | CVPR2026</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
@@ -118,6 +118,16 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <!-- three.js (module) を使ぁE��め�E importmap めEhead に追訁E-->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.183.2/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.2/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="./static/js/pcd.js"></script>
   
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
@@ -125,7 +135,7 @@
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": 'Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal",
-    "description": "LiDAR has become an essential sensing modality in autonomous driving, robotics, and smart-city applications. However, ghost points (or ghost), which are false reflections caused by multi-path laser returns from glass and reflective surfaces, severely degrade 3D mapping and localization accuracy. Prior ghost removal relies on geometric consistency in dense point clouds, failing on mobile LiDAR's sparse, dynamic data. We address this by exploiting full-waveform LiDAR (FWL), which captures complete temporal intensity profiles rather than just peak distances, providing crucial cues for distinguishing ghosts from genuine reflections in mobile scenarios. As this is a new task, we present Ghost-FWL, the first and largest annotated mobile FWL dataset for ghost detection and removal. Ghost-FWL comprises 24K frames across 10 diverse scenes with 7.5 billion peak-level annotations, which is 100× larger than existing annotated FWL datasets.'',
+    "description": "LiDAR has become an essential sensing modality in autonomous driving, robotics, and smart-city applications. However, ghost points (or ghost), which are false reflections caused by multi-path laser returns from glass and reflective surfaces, severely degrade 3D mapping and localization accuracy. Prior ghost removal relies on geometric consistency in dense point clouds, failing on mobile LiDAR's sparse, dynamic data. We address this by exploiting full-waveform LiDAR (FWL), which captures complete temporal intensity profiles rather than just peak distances, providing crucial cues for distinguishing ghosts from genuine reflections in mobile scenarios. As this is a new task, we present Ghost-FWL, the first and largest annotated mobile FWL dataset for ghost detection and removal. Ghost-FWL comprises 24K frames across 10 diverse scenes with 7.5 billion peak-level annotations, which is 100ÁElarger than existing annotated FWL datasets.'',
     "author": [
       { "@type": "Person", "name": "Kazuma Ikeda", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
       { "@type": "Person", "name": "Ryosei Hara", "affiliation": { "@type": "Organization", "name": "INSTITUTION_NAME" } },
@@ -238,7 +248,7 @@
               <span class="author-block">Kazuma Ikeda<sup>*,1</sup>,</span>
               <span class="author-block">Ryosei Hara<sup>*,1</sup>,</span>
 
-              <!-- ↓ここを各著者の所属に合わせて 1 / 2 / 1,2 に変更 -->
+              <!-- ↓ここを吁E��老E�E所属に合わせて 1 / 2 / 1,2 に変更 -->
               <span class="author-block">Rokuto Nagata<sup>1</sup>,</span>
               <span class="author-block">Ozora Sako<sup>1</sup>,</span>
               <span class="author-block">Zihao Ding<sup>1</sup>,</span>
@@ -428,43 +438,40 @@
                   <tbody>
                     <tr>
                       <td>UNIST <a href="#ref-yun2019virtual">[1]</a></td>
-                      <td>2017</td><td>✓</td><td>Stationary</td><td>✗</td><td>3D</td><td>278</td><td>✓</td><td>✗</td><td>--</td><td>--</td>
+                      <td>2017</td><td>✁E/td><td>Stationary</td><td>✁E/td><td>3D</td><td>278</td><td>✁E/td><td>✁E/td><td>--</td><td>--</td>
                     </tr>
                     <tr>
                       <td>Leddar PixSet <a href="#ref-deziel2021pixset">[2]</a></td>
-                      <td>2021</td><td>✓</td><td>Mobile</td><td><strong>✓</strong></td><td>3D</td><td>0.267</td><td>✗</td><td>✓</td><td>--</td><td>--</td>
+                      <td>2021</td><td>✁E/td><td>Mobile</td><td><strong>✁E/strong></td><td>3D</td><td>0.267</td><td>✁E/td><td>✁E/td><td>--</td><td>--</td>
                     </tr>
                     <tr>
                       <td>Lee et al. <a href="#ref-lee2023learning">[3]</a></td>
-                      <td>2023</td><td>✗</td><td>Stationary</td><td>✗</td><td>3D</td><td>278</td><td>✗</td><td>✗</td><td>--</td><td>--</td>
+                      <td>2023</td><td>✁E/td><td>Stationary</td><td>✁E/td><td>3D</td><td>278</td><td>✁E/td><td>✁E/td><td>--</td><td>--</td>
                     </tr>
                     <tr>
                       <td>FRACTAL <a href="#ref-gaydon2024fractal">[4]</a></td>
-                      <td>2024</td><td>✓</td><td>Aerial</td><td>✗</td><td>2D</td><td>--</td><td>✗</td><td>✗</td><td>--</td><td>--</td>
+                      <td>2024</td><td>✁E/td><td>Aerial</td><td>✁E/td><td>2D</td><td>--</td><td>✁E/td><td>✁E/td><td>--</td><td>--</td>
                     </tr>
                     <tr>
                       <td>Scheuble et al. <a href="#ref-scheublelidar">[5]</a></td>
-                      <td>2025</td><td>✗</td><td>Mobile</td><td>✓</td><td>3D</td><td>2.56</td><td>✗</td><td>✓</td><td>0.24k / 2</td><td>NA</td>
+                      <td>2025</td><td>✁E/td><td>Mobile</td><td>✁E/td><td>3D</td><td>2.56</td><td>✁E/td><td>✁E/td><td>0.24k / 2</td><td>NA</td>
                     </tr>
 
                     <tr class="fwltable__divider"><td colspan="11"></td></tr>
 
                     <tr>
                       <td><strong>Ghost-FWL (Ours)</strong></td>
-                      <td><strong>2025</strong></td><td>✓</td><td><strong>Mobile</strong></td><td><strong>✓</strong></td>
-                      <td><strong>3D</strong></td><td><strong>200</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td>
+                      <td><strong>2025</strong></td><td>✁E/td><td><strong>Mobile</strong></td><td><strong>✁E/strong></td>
+                      <td><strong>3D</strong></td><td><strong>200</strong></td><td><strong>✁E/strong></td><td><strong>✁E/strong></td>
                       <td><strong>24k / 10</strong></td><td><strong>7.5B</strong></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-
               <p class="fwltable__note">
                 FWL: Full-Waveform LiDAR.
                 <sup>†</sup>Frames/Scenes: number of annotated frames and number of scenes within the real-world FWL data.
               </p>
-            </div>
-
           </div>
         </div>
       </div>
@@ -517,42 +524,48 @@
             <div class="image" style="width:70%; margin: 0 auto;">
               <img src="static/images/classification_result.png" alt="Classification results figure" loading="lazy">
             </div>
-
-            <h3 class="title is-5">SLAM</h3>
-            <p>
+            <!-- どこでもOK�E�PCD用のUI -->
+            <div id="pcdCompareGrid"></div>
+            <div id="pcd-ui">
+              <label for="pcdShowRedPoints">
+                <input id="pcdShowRedPoints" type="checkbox" checked />
+                Show Red Points
+              </label>
+              <button id="pcdResetViewBtn" type="button">Reset View</button>
+              <span id="pcdStatus">Ready</span>
+            </div>
+            <div class="pcd-scene-row">
+              <span class="pcd-scene-row-label">Scene</span>
+              <div id="pcdScenePicker" class="pcd-scene-picker"></div>
+            </div>
+            </div>
+            <h3 class="title is-5" style="text-align:left;">SLAM</h3>
+            <p style="text-align:left;">
               Trajectory and mapping generated by SLAM using Multi-Peak processing (left) and our ghost removal method (right).
               Multi-Peak processing includes numerous ghost points in the reconstructed map, leading to trajectory drift.
               The proposed method yields a trajectory that more closely follows the ground-truth path (white) by effectively removing ghost artifacts.
             </p>
 
-            <h3 class="title is-5" style="margin-top: 1.25rem;">3D Object Detection</h3>
-            <p>
+            <h3 class="title is-5" style="margin-top: 1.25rem; text-align:left;">3D Object Detection</h3>
+            <p style="text-align:left;">
               Qualitative evaluation of 3D object detection with Multi-Peak processing (left) and our ghost removal (right).
               Green bounding boxes indicate persons. With Multi-Peak, a ghost person is detected behind the glass wall,
               whereas our method suppresses this false detection.
             </p>
             <!-- centered two-images -->
-             <div class="twofig-center">
-              <div class="columns is-variable is-4 is-centered is-vcentered is-gapless">
-                <div class="column is-6">
-                  <figure class="image is-fullwidth">
+            <div class="twofig-center">
+              <div class="columns is-variable is-4 is-centered is-vcentered is-gapless twofig-columns">
+                <div class="column is-6 has-text-centered">
+                  <figure class="image is-fullwidth twofig-item">
                     <img src="static/images/detection.png" alt="Object detection results" class="object-detection-figure" loading="lazy">
+                    <figcaption class="twofig-caption"><strong>Object Detection</strong></figcaption>
                   </figure>
                 </div>
-                <div class="column is-6">
-                  <figure class="image is-fullwidth">
+                <div class="column is-6 has-text-centered">
+                  <figure class="image is-fullwidth twofig-item">
                     <img src="static/images/slam.png" alt="SLAM results" class="slam-figure" loading="lazy">
+                    <figcaption class="twofig-caption"><strong>SLAM</strong></figcaption>
                   </figure>
-                </div>
-              </div>
-
-              <!-- captions at the very bottom (left/right) -->
-              <div class="columns is-variable is-4 is-centered">
-                <div class="column is-6 has-text-centered">
-                  <p class="is-size-7" style="margin-top: .25rem;"><strong>Object Detection</strong></p>
-                </div>
-                <div class="column is-6 has-text-centered">
-                  <p class="is-size-7" style="margin-top: .25rem;"><strong>SLAM</strong></p>
                 </div>
               </div>
             </div>
@@ -727,3 +740,6 @@
 
   </body>
   </html>
+
+
+

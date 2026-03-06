@@ -1,16 +1,184 @@
-.twofig-center{
-  max-width: 900px;   /* 好みで 700〜1000px くらいに調整OK */
-  margin: 0 auto;     /* ブロック全体を中央寄せ */
+.twofig-center {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.twofig-center .columns{
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+.twofig-center .columns {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  justify-content: center;
 }
 
-/* 念のため中央寄せを強制 */
-.twofig-center{
-  max-width: 900px;   /* これは既に入れてる想定 */
-  margin-left: auto;
-  margin-right: auto;
+.twofig-columns .column {
+  display: flex;
+  justify-content: center;
+}
+
+.twofig-item {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.twofig-caption {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+#pcd-ui {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0.5rem 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+#pcd-ui input[type="text"] {
+  width: 320px;
+}
+
+#pcd-ui input[type="range"] {
+  width: 160px;
+}
+
+#pcd-ui select {
+  min-width: 160px;
+  padding: 4px 8px;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+}
+
+.pcd-scene-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pcd-scene-row {
+  margin-top: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pcd-scene-row-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pcd-scene-btn {
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  background: #fff;
+  padding: 4px;
+  cursor: pointer;
+  width: 216px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.pcd-scene-btn.is-active {
+  border-color: #1f6feb;
+  box-shadow: 0 0 0 2px rgba(31, 111, 235, 0.15);
+}
+
+.pcd-scene-thumb {
+  width: 100%;
+  height: 112px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f4f4f4;
+}
+
+.pcd-scene-label {
+  font-size: 0.72rem;
+  line-height: 1.1;
+  text-align: center;
+  word-break: break-word;
+}
+
+#pcd-ui button {
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+#pcdStatus {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-left: 0.5rem;
+}
+
+#pcdCompareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 0.9rem;
+}
+
+.pcd-compare-window {
+  border: 1px solid #2f2f2f;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.pcd-compare-title {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f9f9f9;
+}
+
+.pcd-compare-viewport {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.pcd-compare-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.pcd-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #111;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.pcd-divider-handle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 28px;
+  border-radius: 6px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 1px solid #111;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 768px) {
+  .pcd-compare-viewport {
+    height: 280px;
+  }
 }
