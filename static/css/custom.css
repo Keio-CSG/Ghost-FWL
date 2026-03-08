@@ -228,3 +228,25 @@ footer .has-text-justified {
 #main-content .top-hero span {
   text-align: center !important;
 }
+
+/* Keep all h2 centered even when body text stays left-aligned */
+#main-content h2,
+footer h2 {
+  text-align: center !important;
+}
+
+/* Override stronger left-alignment rules on .title/.subtitle */
+#main-content h2.title,
+#main-content h2.subtitle,
+#main-content h2.has-text-centered,
+footer h2.title,
+footer h2.subtitle {
+  text-align: center !important;
+}
+
+/* Keep BibTeX section left-aligned */
+#main-content #BibTeX h2,
+#main-content #BibTeX h2.title,
+#main-content #BibTeX h2.subtitle {
+  text-align: left !important;
+}

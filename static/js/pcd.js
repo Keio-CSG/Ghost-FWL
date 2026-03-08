@@ -129,6 +129,10 @@ const SCENE_DISPLAY_LABELS = {
 };
 let currentSceneKey = Object.keys(COMPARISON_SCENES)[0] ?? "";
 
+function getSceneDisplayName(sceneKey) {
+  return SCENE_DISPLAY_LABELS[sceneKey] ?? sceneKey;
+}
+
 function setStatus(message) {
   if (statusText) statusText.textContent = message;
 }
@@ -153,22 +157,23 @@ function initScenePicker() {
   }
 
   for (const sceneKey of sceneKeys) {
+    const sceneName = getSceneDisplayName(sceneKey);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "pcd-scene-btn";
     button.setAttribute("data-scene", sceneKey);
-    button.setAttribute("aria-label", `Select scene ${sceneKey}`);
+    button.setAttribute("aria-label", `Select scene ${sceneName}`);
 
     const img = document.createElement("img");
     img.src = `./static/images/${sceneKey}.png`;
-    img.alt = sceneKey;
+    img.alt = sceneName;
     img.loading = "lazy";
     img.className = "pcd-scene-thumb";
     button.appendChild(img);
 
     const label = document.createElement("span");
     label.className = "pcd-scene-label";
-    label.textContent = SCENE_DISPLAY_LABELS[sceneKey] ?? sceneKey;
+    label.textContent = sceneName;
     button.appendChild(label);
 
     button.addEventListener("click", async () => {
@@ -614,11 +619,12 @@ async function loadSceneComparisons({ fitView = false } = {}) {
   const sceneKey = currentSceneKey || Object.keys(COMPARISON_SCENES)[0];
   if (!sceneKey) return false;
   currentSceneKey = sceneKey;
+  const sceneName = getSceneDisplayName(sceneKey);
   setActiveSceneButton(sceneKey);
   const urls = getSceneURLs(sceneKey);
   if (!urls) return false;
 
-  setStatus(`Loading: ${sceneKey}`);
+  setStatus(`Loading: ${sceneName}`);
   const entries = await Promise.all(
     METHOD_ORDER.map(async (method) => {
       const points = await loadPCDFromURL(urls[method]);
@@ -639,7 +645,7 @@ async function loadSceneComparisons({ fitView = false } = {}) {
     syncAllViewerCamerasFromFirst();
   }
 
-  setStatus(`Loaded: ${sceneKey} / all baselines vs ours`);
+  setStatus(`Loaded: ${sceneName} / all baselines vs ours`);
   return true;
 }
 

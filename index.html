@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -33,7 +33,7 @@
   <!-- TODO: Same as paper title above -->
   <meta property="og:title" content="Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal">
   <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <meta property="og:description" content="Keio CSG is directed by Ken, who is a Associate Professor at Keio University. I'm looking for Ph.D students to work on">
   <!-- TODO: Replace with your actual website URL -->
   <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
   <!-- TODO: Create a 1200x630px preview image and update path -->
@@ -303,7 +303,7 @@
 
                 <!-- TODO: Replace with your GitHub repository URL -->
                 <span class="link-block">
-                  <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                  <a href="https://github.com/Keio-CSG/Ghost-FWL.git" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fab fa-github"></i>
@@ -344,7 +344,7 @@
       <div class="image is-fullwidth">
         <img src="static/images/dataset.png" alt="Dataset overview figure" class="dataset-figure" loading="lazy">
       </div>
-      <h2 class="subtitle has-text-left">
+      <h2 class="subtitle has-text-centered">
         <strong>Overview of the Ghost-FWL.</strong>
         Left: Our dataset includes both indoor and outdoor scenes. Based on the dense 3D maps as shown in Scene, we annotated FWL data with semantic labels:
         <em>Ghost</em> (red), <em>Object</em> (green), <em>Glass</em> (blue), <em>Noise</em>. Gray regions are excluded from annotation.
@@ -383,7 +383,7 @@
 <!-- End paper abstract -->
 
 <!-- Paper dataset -->
-<section class="hero is-small is-light">
+<section class="hero is-small is-light section-white">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered has-text-centered">
@@ -446,32 +446,32 @@
 
                   <tbody>
                     <tr>
-                      <td>UNIST <a href="#ref-yun2019virtual">[1]</a></td>
-                      <td>2017</td><td>✓</td><td>Stationary</td><td>✗</td><td>3D</td><td>278</td><td>✓</td><td>✗</td><td>--</td><td>--</td>
+                      <td>UNIST<a href="#ref-yun2019virtual">[1]</a></td>
+                      <td>2017</td><td><span class="fwltable-check">✓</span></td><td>Stationary</td><td><span class="fwltable-cross">✗</span></td><td>3D</td><td>278</td><td><span class="fwltable-check">✓</span></td><td><span class="fwltable-cross">✗</span></td><td>--</td><td>--</td>
                     </tr>
                     <tr>
-                      <td>Leddar PixSet <a href="#ref-deziel2021pixset">[2]</a></td>
-                      <td>2021</td><td>✓</td><td>Mobile</td><td><strong>✓</strong></td><td>3D</td><td>0.267</td><td>✗</td><td>✓</td><td>--</td><td>--</td>
+                      <td>Leddar PixSet<a href="#ref-deziel2021pixset">[2]</a></td>
+                      <td>2021</td><td><span class="fwltable-check">✓</span></td><td>Mobile</td><td><strong><span class="fwltable-check">✓</span></strong></td><td>3D</td><td>0.267</td><td><span class="fwltable-cross">✗</span></td><td><span class="fwltable-check">✓</span></td><td>--</td><td>--</td>
                     </tr>
                     <tr>
-                      <td>Lee et al. <a href="#ref-lee2023learning">[3]</a></td>
-                      <td>2023</td><td>✗</td><td>Stationary</td><td>✗</td><td>3D</td><td>278</td><td>✗</td><td>✗</td><td>--</td><td>--</td>
+                      <td>Lee et al.<a href="#ref-lee2023learning">[3]</a></td>
+                      <td>2023</td><td><span class="fwltable-cross">✗</span></td><td>Stationary</td><td><span class="fwltable-cross">✗</span></td><td>3D</td><td>278</td><td><span class="fwltable-cross">✗</span></td><td><span class="fwltable-cross">✗</span></td><td>--</td><td>--</td>
                     </tr>
                     <tr>
-                      <td>FRACTAL <a href="#ref-gaydon2024fractal">[4]</a></td>
-                      <td>2024</td><td>✓</td><td>Aerial</td><td>✗</td><td>2D</td><td>--</td><td>✗</td><td>✗</td><td>--</td><td>--</td>
+                      <td>FRACTAL<a href="#ref-gaydon2024fractal">[4]</a></td>
+                      <td>2024</td><td><span class="fwltable-check">✓</span></td><td>Aerial</td><td><span class="fwltable-cross">✗</span></td><td>2D</td><td>--</td><td><span class="fwltable-cross">✗</span></td><td><span class="fwltable-cross">✗</span></td><td>--</td><td>--</td>
                     </tr>
                     <tr>
-                      <td>Scheuble et al. <a href="#ref-scheublelidar">[5]</a></td>
-                      <td>2025</td><td>✗</td><td>Mobile</td><td>✓</td><td>3D</td><td>2.56</td><td>✗</td><td>✓</td><td>0.24k / 2</td><td>NA</td>
+                      <td>Scheuble et al.<a href="#ref-scheublelidar">[5]</a></td>
+                      <td>2025</td><td><span class="fwltable-cross">✗</span></td><td>Mobile</td><td><span class="fwltable-check">✓</span></td><td>3D</td><td>2.56</td><td><span class="fwltable-cross">✗</span></td><td><span class="fwltable-check">✓</span></td><td>0.24k / 2</td><td>NA</td>
                     </tr>
 
                     <tr class="fwltable__divider"><td colspan="11"></td></tr>
 
                     <tr>
                       <td><strong>Ghost-FWL (Ours)</strong></td>
-                      <td><strong>2025</strong></td><td>✓</td><td><strong>Mobile</strong></td><td><strong>✓</strong></td>
-                      <td><strong>3D</strong></td><td><strong>200</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td>
+                      <td><strong>2025</strong></td><td><span class="fwltable-check">✓</span></td><td><strong>Mobile</strong></td><td><strong><span class="fwltable-check">✓</span></strong></td>
+                      <td><strong>3D</strong></td><td><strong>200</strong></td><td><strong><span class="fwltable-check">✓</span></strong></td><td><strong><span class="fwltable-check">✓</span></strong></td>
                       <td><strong>24k / 10</strong></td><td><strong>7.5B</strong></td>
                     </tr>
                   </tbody>
@@ -480,6 +480,21 @@
               <p class="fwltable__note">
                 FWL: Full-Waveform LiDAR.
                 <sup>†</sup>Frames/Scenes: number of annotated frames and number of scenes within the real-world FWL data.
+              </p>
+              <p class="fwltable__note fwltable__ref">
+                [1] Yun et al., "Virtual Point Removal for Large-Scale 3D Point Clouds with Multiple Glass Planes", IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019.
+              </p>
+              <p class="fwltable__note fwltable__ref">
+                [2] Deziel et al., "An Opportunity for 3D Computer Vision to Go Beyond Point Clouds with a Full-Waveform LiDAR Dataset", IEEE International Intelligent Transportation Systems Conference, 2021.
+              </p>
+              <p class="fwltable__note fwltable__ref">
+                [3] Lee et al., "Learning-Based Reflection-Aware Virtual Point Removal for Large-Scale 3D Point Clouds", IEEE Robotics and Automation Letters, 2023.
+              </p>
+              <p class="fwltable__note fwltable__ref">
+                [4] Gaydon et al., "FRACTAL: An Ultra-Large-Scale Aerial Lidar Dataset for 3D Semantic Segmentation of Diverse Landscapes", arXiv preprint arXiv:2405.04634, 2024.
+              </p>
+              <p class="fwltable__note fwltable__ref">
+                [5] Scheuble et al., "Lidar Waveforms are Worth 40x128x33 Words", ICCV, 2025.
               </p>
           </div>
         </div>
@@ -518,7 +533,7 @@
 <!-- End paper method -->
 
 <!-- Paper result -->
-<section class="hero is-small is-light">
+<section class="hero is-small is-light section-white">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered has-text-centered">
@@ -571,7 +586,7 @@
                 <div class="column is-6 has-text-centered">
                   <figure class="image is-fullwidth twofig-item">
                     <img src="static/images/detection.png" alt="Object detection results" class="object-detection-figure" loading="lazy">
-                    <figcaption class="twofig-caption"><strong>Object Detection</strong></figcaption>
+                    <figcaption class="twofig-caption"><strong>3D Object Detection</strong></figcaption>
                   </figure>
                 </div>
                 <div class="column is-6 has-text-centered">
