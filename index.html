@@ -18,7 +18,7 @@
   <meta name="title" content="Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal - Kazuma Ikeda, Ryosei Hara, Rokuto Nagata, Ozora Sako, Zihao Ding, Takahiro Kado, Ibuki Fujioka, Taro Beppu, Mariko Isogawa, Kentaro Yoshioka">
 
   <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <meta name="description" content="LiDAR has become an essential sensing modality in autonomous driving, robotics, and smart-city applications. However, ghost points (or ghost), which are false reflections caused by multi-path laser returns from glass and reflective surfaces, severely degrade 3D mapping and localization accuracy. Prior ghost removal relies on geometric consistency in dense point clouds, failing on mobile LiDAR's sparse, dynamic data. We address this by exploiting full-waveform LiDAR (FWL), which captures complete temporal intensity profiles rather than just peak distances, providing crucial cues for distinguishing ghosts from genuine reflections in mobile scenarios. As this is a new task, we present Ghost-FWL, the first and largest annotated mobile FWL dataset for ghost detection and removal. Ghost-FWL comprises 24K frames across 10 diverse scenes with 7.5 billion peak-level annotations, which is 100× larger than existing annotated FWL datasets.">
   <!-- TODO: Add 5-10 relevant keywords for your research area -->
   <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
   <!-- TODO: List all authors -->
@@ -399,6 +399,20 @@
               <a href="https://light.princeton.edu/publication/lidar-transformers/">[Scheuble et al.]</a>, enabling learning-based ghost detection and removal at the waveform level.
             </p>
 
+            <h3 class="title is-5">Dataset Point Clouds</h3>
+            <p>
+              Interactive visualization of Ghost-FWL point clouds. Select a scene to inspect the raw dataset geometry.
+            </p>
+            <div id="dataset-pcd-ui">
+              <label for="datasetPcdShowRedPoints">
+                <input id="datasetPcdShowRedPoints" type="checkbox" checked />
+                Show Ghost Points
+              </label>
+              <button id="datasetPcdResetViewBtn" type="button">Reset View</button>
+              <span id="datasetPcdStatus">Ready</span>
+            </div>
+            <div id="datasetPcdCompareGrid"></div>
+
             <div id="tab-fwldataset-comparison" class="fwltable-card">
               <div class="table-container">
                 <table class="table is-bordered is-striped is-hoverable is-fullwidth fwltable__table">
@@ -557,7 +571,7 @@
             <div id="pcd-ui">
               <label for="pcdShowRedPoints">
                 <input id="pcdShowRedPoints" type="checkbox" checked />
-                Show Red Points
+                Show Ghost Points
               </label>
               <button id="pcdResetViewBtn" type="button">Reset View</button>
               <span id="pcdStatus">Ready</span>

@@ -27,7 +27,8 @@
   line-height: 1.2;
 }
 
-#pcd-ui {
+#pcd-ui,
+#dataset-pcd-ui {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -37,15 +38,18 @@
   font-size: 0.95rem;
 }
 
-#pcd-ui input[type="text"] {
+#pcd-ui input[type="text"],
+#dataset-pcd-ui input[type="text"] {
   width: 320px;
 }
 
-#pcd-ui input[type="range"] {
+#pcd-ui input[type="range"],
+#dataset-pcd-ui input[type="range"] {
   width: 160px;
 }
 
-#pcd-ui select {
+#pcd-ui select,
+#dataset-pcd-ui select {
   min-width: 160px;
   padding: 4px 8px;
   border: 1px solid #c7c7c7;
@@ -99,6 +103,18 @@
   background: #f4f4f4;
 }
 
+.pcd-scene-thumb.pcd-scene-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #333;
+  background: linear-gradient(135deg, #f7f7f7 0%, #ececec 100%);
+}
+
 .pcd-scene-label {
   font-size: 0.72rem;
   line-height: 1.1;
@@ -106,23 +122,35 @@
   word-break: break-word;
 }
 
-#pcd-ui button {
+#pcd-ui button,
+#dataset-pcd-ui button {
   border: 0;
   border-radius: 6px;
   padding: 6px 12px;
   cursor: pointer;
 }
 
-#pcdStatus {
+#pcdStatus,
+#datasetPcdStatus {
   font-size: 0.85rem;
   opacity: 0.9;
   margin-left: 0.5rem;
 }
 
-#pcdCompareGrid {
+#pcdCompareGrid,
+#datasetPcdCompareGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 0.9rem;
+}
+
+.fwltable-card {
+  margin-top: 1rem;
+}
+
+.fwltable__caption {
+  text-align: left;
+  margin-bottom: 0.5rem;
 }
 
 .pcd-compare-window {
