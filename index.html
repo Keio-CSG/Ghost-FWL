@@ -213,31 +213,33 @@
       </div>
       <div class="works-list">
         <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
+        <a href="https://sites.google.com/keio.jp/keio-csg/projects/optical-lidar-communication?authuser=0" class="work-item" target="_blank">
           <div class="work-info">
             <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
+            <h5>Optical LiDAR Communication: Repurposing Existing LiDAR Sensors for Infrastructure-to-Vehicle Communication</h5>
             <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
+            <p>As autonomous mobile robots increasingly operate in real-world environments, safety has emerged as a critical challenge, particularly regarding obstacle and pedestrian detection in building blind spots and reliable traffic signal recognition. While traditional Vehicle-to-Infrastructure (V2I) systems adopt high-capacity communication through 5G networks or via Optical Wireless Communication (OWC), these approaches require dedicated communication hardware that proves impractical for small, low-cost robots. Additionally, the communication bandwidth required for robot-oriented V2I, such as blind spot object detection and traffic signal states, is relatively limited; the high-capacity communication of 5G is often unnecessary. To address these challenges, we propose a novel optical communication system named Optical LiDAR Communication (OLC), which repurposes existing LiDAR sensors as communication devices. By integrating LiDAR Injection with 2D Code technology, OLC achieves cost-effectiveness through V2I communication without requiring additional hardware on robots. Real-world experiments confirmed that the proposed method achieves a communication success rate of over 76% at distances up to 30 meters. Furthermore, as a proof-of-concept, we develop two key V2I systems utilizing OLC: traffic signal information transmission and blind-spot obstacle detection, and real-time communication performance was demonstrated. These results indicate that the proposed method has potential as a V2I platform for next-generation robotics infrastructure.</p>
             <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
+            <span class="work-venue">RA-L 2025</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
         <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
+        <a href="https://sites.google.com/keio.jp/keio-csg/projects/AttackonDrivingVehicle?authuser=0" class="work-item" target="_blank">
           <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
+            <h5>On the Realism of LiDAR Spoofing Attacks against Autonomous Driving Vehicle at High Speed and Long Distance</h5>
+            <p>The rapid deployment of Autonomous Driving (AD) technologies on public roads presents significant social challenges. The security of LiDAR (Light Detection and Ranging) is one of the emerging challenges in AD deployment, given its crucial role in enabling Level 4 autonomy through accurate 3D environmental sensing. Recent lines of research have demonstrated that LiDAR can be compromised by LiDAR spoofing attacks that overwrite legitimate sensing by emitting malicious lasers to the LiDAR. However, previous studies have successfully demonstrated their attacks in controlled environments, yet gaps exist in the feasibility of their attacks in realistic high-speed, long-distance AD scenarios. To bridge these gaps, we design a novel Moving Vehicle Spoofing (MVS) system consisting of 3 subsystems: the LiDAR detection and tracking system, the auto-aiming system, and the LiDAR spoofing system. Furthermore, we design a new object removal attack, an adaptive high-frequency removal (A-HFR) attack, that can be effective even against recent LiDARs with pulse fingerprinting features, by leveraging gray-box knowledge of the scan timing of target LiDARs. With our MVS system, we are not only the first to demonstrate LiDAR spoofing attacks against practical AD scenarios where the victim vehicle is driving at high speeds (60 km/h) and the attack is launched from long distances (110 meters), but we are also the first to perform LiDAR spoofing attacks against a vehicle actually operated by a popular AD stack. Our object removal attack achieves ≥96% attack success rates against the vehicle driving at 60 km/h to the braking distances (20 meters). Finally, we discuss possible countermeasures against attacks with our MVS system. This study not only bridges critical gaps between LiDAR security and AD security research but also sets a foundation for developing robust countermeasures against emerging threats. </p>
+            <span class="work-venue">NDSS 2025</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
+        <a href="https://sites.google.com/keio.jp/keio-csg/projects/new-gen-lidar-sec?authuser=0" class="work-item" target="_blank">
           <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
+            <h5>LiDAR Spoofing Meets the New-Gen:  Capability Improvements, Broken Assumptions, and New Attack Strategies</h5>
+            <p>LiDAR (Light Detection And Ranging) is an indispensable sensor for precise long- and wide-range 3D sensing, which directly benefited the recent rapid deployment of autonomous driving (AD). Meanwhile, such a safety-critical application strongly motivates its security research. A recent line of research demonstrates that one can manipulate the LiDAR point cloud and fool object detection by firing malicious lasers against LiDAR. However, these efforts face 3 critical research gaps: (1) evaluating only on a specific LiDAR (VLP-16); (2) assuming unvalidated attack capabilities; and (3) evaluating with models trained on limited datasets. 
+
+            To fill these critical research gaps, we conduct the first large-scale measurement study on LiDAR spoofing attack capabilities on object detectors with 9 popular LiDARs in total and 3 major types of object detectors. To perform this measurement, we significantly improved the LiDAR spoofing capability with more careful optics and functional electronics, which allows us to be the first to clearly demonstrate and quantify key attack capabilities assumed in prior works. However, we further find that such key assumptions actually can no longer hold for all the other (8 out of 9) LiDARs that are more recent than VLP-16 due to various recent LiDAR features. To this end, we further identify a new type of LiDAR spoofing attack that can improve on this and be applicable to a much more general and recent set of LiDARs. We find that its attack capability is enough to (1) cause end-to-end safety hazards in simulated AD scenarios, and (2) remove real vehicles in the physical world. We also discuss the defense side.</p>
+            <span class="work-venue">NDSS 2024</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
@@ -762,11 +764,11 @@
       <div class="column is-8">
         <div class="content">
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+          <!-- <p>
+            This page was built from <a href="https://github.com/Keio-CSG/Ghost-FWL" target="_blank">this github page</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
             You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
+          </p> -->
 
         </div>
       </div>
