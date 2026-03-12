@@ -144,6 +144,60 @@
   gap: 0.9rem;
 }
 
+.pcd-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pcd-carousel-viewport {
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+
+#datasetPcdCompareGrid.pcd-carousel-track {
+  display: flex;
+  grid-template-columns: none;
+  gap: 0.9rem;
+  transition: transform 220ms ease;
+  will-change: transform;
+}
+
+#datasetPcdCompareGrid.pcd-carousel-track .pcd-compare-window {
+  flex: 0 0 calc((100% - 1.8rem) / 3);
+  min-width: 0;
+}
+
+.pcd-carousel-nav {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #bfc7d1;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.pcd-carousel-nav[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.link-block-pending {
+  opacity: 0.6;
+}
+
+.button.is-link-pending {
+  opacity: 1;
+}
+
 .fwltable-card {
   margin-top: 1rem;
 }
@@ -151,6 +205,11 @@
 .fwltable__caption {
   text-align: left;
   margin-bottom: 0.5rem;
+}
+
+.fwltable__ref {
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .pcd-compare-window {
@@ -206,6 +265,10 @@
 }
 
 @media (max-width: 768px) {
+  #datasetPcdCompareGrid.pcd-carousel-track .pcd-compare-window {
+    flex-basis: 100%;
+  }
+
   .pcd-compare-viewport {
     height: 280px;
   }

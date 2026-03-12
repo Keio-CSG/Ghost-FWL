@@ -786,14 +786,20 @@ class PcdApp {
     this.viewerMode = viewerMode;
     this.currentSceneKey = Object.keys(scenes)[0] ?? "";
     this.viewers = [];
+    this.carouselIndex = 0;
+    this.carouselVisibleCount = 3;
   }
 
   init() {
     if (!this.grid) return false;
-    if (this.viewerMode !== "grid" && !this.scenePicker) return false;
+    if (!["grid", "carousel"].includes(this.viewerMode) && !this.scenePicker) return false;
+
+    if (this.viewerMode === "carousel") {
+      this.setupCarousel();
+    }
 
     this.createViewers();
-    if (this.viewerMode !== "grid") {
+    if (!["grid", "carousel"].includes(this.viewerMode)) {
       this.initScenePicker();
     }
 
@@ -827,15 +833,91 @@ class PcdApp {
       this.viewers = compareMethods.map((method) => new CompareViewer(this.grid, method));
       return;
     }
-    if (this.viewerMode === "grid") {
+    if (["grid", "carousel"].includes(this.viewerMode)) {
       this.viewers = Object.keys(this.scenes).map((sceneKey) => {
         const viewer = new SingleViewer(this.grid, this.getSceneDisplayName(sceneKey));
         viewer.sceneKey = sceneKey;
         return viewer;
       });
+      if (this.viewerMode === "carousel") {
+        this.updateCarouselLayout();
+      }
       return;
     }
     this.viewers = [new SingleViewer(this.grid, "Ghost-FWL raw point cloud")];
+  }
+
+  setupCarousel() {
+    const parent = this.grid.parentElement;
+    if (!parent) return;
+
+    this.carouselRoot = document.createElement("div");
+    this.carouselRoot.className = "pcd-carousel";
+
+    this.carouselPrevBtn = document.createElement("button");
+    this.carouselPrevBtn.type = "button";
+    this.carouselPrevBtn.className = "pcd-carousel-nav pcd-carousel-nav-prev";
+    this.carouselPrevBtn.setAttribute("aria-label", "Previous point clouds");
+    this.carouselPrevBtn.textContent = "<";
+
+    this.carouselNextBtn = document.createElement("button");
+    this.carouselNextBtn.type = "button";
+    this.carouselNextBtn.className = "pcd-carousel-nav pcd-carousel-nav-next";
+    this.carouselNextBtn.setAttribute("aria-label", "Next point clouds");
+    this.carouselNextBtn.textContent = ">";
+
+    this.carouselViewport = document.createElement("div");
+    this.carouselViewport.className = "pcd-carousel-viewport";
+
+    parent.insertBefore(this.carouselRoot, this.grid);
+    this.carouselRoot.appendChild(this.carouselPrevBtn);
+    this.carouselRoot.appendChild(this.carouselViewport);
+    this.carouselViewport.appendChild(this.grid);
+    this.carouselRoot.appendChild(this.carouselNextBtn);
+
+    this.grid.classList.add("pcd-carousel-track");
+
+    this.carouselPrevBtn.addEventListener("click", () => this.moveCarousel(-1));
+    this.carouselNextBtn.addEventListener("click", () => this.moveCarousel(1));
+  }
+
+  getCarouselVisibleCount() {
+    const width = window.innerWidth || 0;
+    if (width <= 768) return 1;
+    if (width <= 1100) return 2;
+    return 3;
+  }
+
+  moveCarousel(direction) {
+    const maxIndex = Math.max(0, this.viewers.length - this.carouselVisibleCount);
+    this.carouselIndex = Math.max(0, Math.min(maxIndex, this.carouselIndex + direction));
+    this.updateCarouselLayout();
+  }
+
+  updateCarouselLayout() {
+    if (this.viewerMode !== "carousel" || !this.carouselViewport) return;
+
+    this.carouselVisibleCount = this.getCarouselVisibleCount();
+    const gapPx = 14.4;
+    const viewportWidth = this.carouselViewport.clientWidth;
+    if (!viewportWidth) return;
+
+    const cardWidth = (viewportWidth - gapPx * (this.carouselVisibleCount - 1)) / this.carouselVisibleCount;
+    for (const viewer of this.viewers) {
+      viewer.root.style.flexBasis = `${cardWidth}px`;
+    }
+
+    const maxIndex = Math.max(0, this.viewers.length - this.carouselVisibleCount);
+    this.carouselIndex = Math.max(0, Math.min(maxIndex, this.carouselIndex));
+    const step = cardWidth + gapPx;
+    this.grid.style.transform = `translateX(-${this.carouselIndex * step}px)`;
+
+    if (this.carouselPrevBtn) {
+      this.carouselPrevBtn.disabled = this.carouselIndex <= 0;
+    }
+    if (this.carouselNextBtn) {
+      this.carouselNextBtn.disabled = this.carouselIndex >= maxIndex;
+    }
   }
 
   getSceneDisplayName(sceneKey) {
@@ -940,6 +1022,9 @@ class PcdApp {
   }
 
   resize() {
+    if (this.viewerMode === "carousel") {
+      this.updateCarouselLayout();
+    }
     for (const viewer of this.viewers) {
       viewer.resize();
     }
@@ -952,7 +1037,7 @@ class PcdApp {
   }
 
   async loadScene({ fitView = false } = {}) {
-    if (this.viewerMode === "grid") {
+    if (["grid", "carousel"].includes(this.viewerMode)) {
       return this.loadAllScenes({ fitView });
     }
 
@@ -1032,6 +1117,9 @@ class PcdApp {
     }
 
     this.setStatus(`Loaded: ${sceneKeys.length} dataset scenes`);
+    if (this.viewerMode === "carousel") {
+      this.updateCarouselLayout();
+    }
     return true;
   }
 
@@ -1053,7 +1141,7 @@ const apps = [
     scenes: DATASET_SCENES,
     methodOrder: DATASET_METHOD_ORDER,
     sceneDisplayLabels: DATASET_SCENE_DISPLAY_LABELS,
-    viewerMode: "grid",
+    viewerMode: "carousel",
   }),
   new PcdApp({
     scenePickerId: "pcdScenePicker",
