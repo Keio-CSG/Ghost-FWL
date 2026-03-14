@@ -196,6 +196,8 @@
 
 .button.is-link-pending {
   opacity: 1;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .fwltable-card {
