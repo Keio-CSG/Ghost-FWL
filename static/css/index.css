@@ -302,7 +302,7 @@ body {
   transform: scale(1.2);
 }
 
-.eql-cntrb { 
+.eql-cntrb {
   font-size: 0.875rem;
   color: var(--text-light);
   font-style: italic;
@@ -357,6 +357,11 @@ h2.title.is-3 {
   background: var(--background-secondary);
   border-top: 1px solid var(--border-color);
   padding: 3rem 1.5rem;
+}
+
+.footer.is-light {
+  background: #ffffff !important;
+  border-top: 1px solid var(--border-color);
 }
 
 .footer .content {
@@ -620,54 +625,59 @@ code {
   .hero-body {
     padding: 2rem 1rem;
   }
-  
+
   .publication-header .hero-body {
     padding: 3rem 1rem 2rem;
   }
-  
+
   .publication-title {
     font-size: 2.5rem !important;
     line-height: 1.2 !important;
     margin-bottom: 1.5rem !important;
   }
-  
+
   .publication-authors {
     font-size: 1rem !important;
   }
-  
+
   .button {
     margin: 0.25rem !important;
     font-size: 0.875rem !important;
     padding: 0.75rem 1rem !important;
   }
-  
+
   .more-works-container {
     bottom: 2rem;
     right: 1rem;
     top: auto;
   }
-  
+
   .more-works-btn {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
   }
-  
+
   .more-works-dropdown {
     width: calc(100vw - 2rem);
     right: -1rem;
     bottom: calc(100% + 0.5rem);
     top: auto;
   }
-  
+
+  .scroll-to-top {
+    bottom: 6.5rem;
+    right: 1rem;
+  }
+
   .results-carousel .item {
     margin: 0.5rem;
     padding: 1rem;
   }
-  
+
   .teaser .hero-body {
     padding: 1rem;
   }
-  
+
   .content.has-text-justified {
     font-size: 1rem;
   }
@@ -677,23 +687,23 @@ code {
   .publication-title {
     font-size: 2rem !important;
   }
-  
+
   .hero-body {
     padding: 1.5rem 0.75rem;
   }
-  
+
   .more-works-container {
     position: fixed;
     bottom: 2rem;
     right: 1rem;
     z-index: 1000;
   }
-  
+
   .more-works-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
   }
-  
+
   .more-works-dropdown {
     position: absolute;
     bottom: calc(100% + 0.5rem);
@@ -701,12 +711,17 @@ code {
     width: calc(100vw - 2rem);
     max-width: 90vw;
   }
-  
+
+  .scroll-to-top {
+    bottom: 6rem;
+    right: 1rem;
+  }
+
   .link-block {
     display: block;
     margin-bottom: 0.5rem;
   }
-  
+
   .button {
     width: 100%;
     justify-content: center;
@@ -718,7 +733,7 @@ code {
   .hero-body {
     padding: 3rem 2rem;
   }
-  
+
   .publication-header .hero-body {
     padding: 4rem 2rem 3rem;
   }
@@ -787,11 +802,11 @@ a:focus {
   .more-works-container {
     display: none;
   }
-  
+
   .hero, .section {
     animation: none;
   }
-  
+
   .button {
     background: transparent !important;
     color: var(--text-primary) !important;
