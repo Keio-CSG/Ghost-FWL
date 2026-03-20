@@ -1,0 +1,7 @@
+# GT point cloud
+gt_pcd: /path/to/_gt.pcd
+# Ghost-removed point cloud
+removed_pcd: /path/to/ghost-removed.pcd
+
+# Distance threshold for matching points (meters)
+distance_threshold: 0.001

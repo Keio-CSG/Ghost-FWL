@@ -1,0 +1,5 @@
+# Root directory containing *_gt.pcd and *.pcd pairs
+root: /path/to/pcd_dir
+
+# Distance threshold for matching points (meters)
+distance_threshold: 0.001

@@ -1,0 +1,34 @@
+# Prediction files directory
+pred_dir: /path/to/prediction_voxel_dir
+
+# Ghost dataset root (auto-resolves data and annotation files)
+ghost_dataset: /path/to/ghost_dataset
+
+# Annotation: auto-detects highest annotation_v{N} for each scene
+expand: false                 # true -> annotation_v{N}_expand, false -> annotation_v{N}
+
+# Output
+output_dir: /path/to/output_dir
+
+# Upsample prediction Z-axis
+upsample: false
+original_depth: 675
+target_depth: 256
+
+# Colorization: label, distance, none
+color_mode: label
+
+# Visibility
+show_noise: false
+show_undefined: false
+
+# Ghost removal: none, skip_points, remove_neighbors
+ghost_removal_mode: skip_points
+remove_ghost_neighbors_radius: 0.0
+
+# Coordinate ranges and offsets
+x_range: [0, 400]
+y_range: [90, 422]
+x_offset: 0
+y_offset: 90
+bin_offset: 25

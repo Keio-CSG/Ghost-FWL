@@ -1,0 +1,27 @@
+repos:
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  # Ruff version.
+  rev: v0.15.5
+  hooks:
+    # Run the linter.
+  - id: ruff
+    args: [--fix]
+    # Run the formatter.
+  - id: ruff-format
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0  # Use the ref you want to point at
+  hooks:
+  - id: pretty-format-json
+    args: [--autofix]
+    exclude: package-lock.json
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.16.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
+  - id: pretty-format-toml
+    args: [--autofix, --indent, '2', --no-sort]

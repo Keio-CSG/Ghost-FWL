@@ -1,0 +1,104 @@
+###########################################################
+# training
+###########################################################
+seed: 42
+lr: 0.0001
+batch_size: 32
+epochs: 100
+device: cuda:0
+
+###########################################################
+# Output, log
+###########################################################
+config_name: train
+save_model_dir: /path/to/Ghost-FWL/data/save/
+save_model_interval: 10
+is_train: true
+is_log: false  # Set to true to enable wandb logging
+log_interval: 100
+
+###########################################################
+# dataset, dataloader
+###########################################################
+num_workers: 8
+divide: 1  # Use full dataset
+
+###########################################################
+# Model Configuration
+###########################################################
+model_name: fwl_mae_pretrain
+num_classes: 1
+n_channels: 1  # Single channel voxel input
+target_size: [128, 128, 256]  # Use original size after downsampling: ~(400, 512, 100)
+downsample_z: 256  # Downsample histogram direction to N bins
+mask_ratio: 0.70  # Ratio of X,Y coordinates to mask
+mask_value: 0.0  # Value to use for masked positions
+y_crop_top: 90
+y_crop_bottom: 90
+z_crop_front: 25
+
+voxel_size: [256, 128, 128]  # (D, H, W) for model - matches target_size after conversion
+patch_size: [256, 16, 16]  # (patch_d, patch_h, patch_w)
+encoder_embed_dim: 768
+encoder_depth: 6
+encoder_num_heads: 6
+decoder_embed_dim: 384
+decoder_depth: 6
+decoder_num_heads: 6
+
+###########################################################
+# loss, optimizer, scheduler
+###########################################################
+loss_fn: pretrain_loss
+
+max_peaks: 4
+position_weight: 1.0
+height_weight: 1.0
+width_weight: 0.5
+mae_reconstruction_weight: 1.0
+position_loss: l1
+height_loss: l1
+width_loss: l1
+mae_reconstruction_loss: mse
+
+# Optimizer settings
+optimizer: adamw    # adamw or adam
+scheduler: ''
+
+##########################################################
+# Input - Voxel Data Paths
+###########################################################
+train_voxel_dirs:
+- /path/to/mae_dataset/20251014142232_voxel_b2
+- /path/to/mae_dataset/20251014143349_voxel_b2
+- /path/to/mae_dataset/20251014144845_voxel_b2
+- /path/to/mae_dataset/20251014145409_voxel_b2
+- /path/to/mae_dataset/20251014163055_voxel_b2
+- /path/to/mae_dataset/20251014144054_voxel_b2
+- /path/to/mae_dataset/20251017121123_voxel_b2
+- /path/to/mae_dataset/20251017155757_voxel_b2
+- /path/to/mae_dataset/20251017160202_voxel_b2
+- /path/to/mae_dataset/20251017163029_voxel_b2
+
+valid_voxel_dirs:
+- /path/to/mae_dataset/20251017171131_voxel_b2
+- /path/to/mae_dataset/20251017171751_voxel_b2
+
+
+train_peak_dirs:
+- /path/to/mae_dataset/peaks/20251014142232_voxel_b2
+- /path/to/mae_dataset/peaks/20251014143349_voxel_b2
+- /path/to/mae_dataset/peaks/20251014144845_voxel_b2
+- /path/to/mae_dataset/peaks/20251014145409_voxel_b2
+- /path/to/mae_dataset/peaks/20251014163055_voxel_b2
+- /path/to/mae_dataset/peaks/20251014144054_voxel_b2
+- /path/to/mae_dataset/peaks/20251017121123_voxel_b2
+- /path/to/mae_dataset/peaks/20251017155757_voxel_b2
+- /path/to/mae_dataset/peaks/20251017160202_voxel_b2
+- /path/to/mae_dataset/peaks/20251017163029_voxel_b2
+
+
+
+valid_peak_dirs:
+- /path/to/mae_dataset/peaks/20251017171131_voxel_b2
+- /path/to/mae_dataset/peaks/20251017171751_voxel_b2

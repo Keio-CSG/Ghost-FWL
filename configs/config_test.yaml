@@ -1,0 +1,108 @@
+###########################################################
+# training
+###########################################################
+seed: 42
+batch_size: 8 # Reduced batch size for 3D data
+device: cuda:0
+checkpoint_path: ''
+use_threshold_prediction: true
+prediction_threshold: 0.5
+
+###########################################################
+# Output, log
+###########################################################
+config_name: test
+is_train: false
+is_log: false  # Set to true to enable wandb logging
+
+###########################################################
+# dataset, dataloader
+###########################################################
+num_workers: 8
+divide: 1  # Use full dataset
+
+###########################################################
+# Model Configuration
+###########################################################
+model_name: fwl_mae
+num_classes: 4
+n_channels: 1  # Single channel voxel input
+target_size: [128, 128, 256]  # Use original size after downsampling: ~(400, 512, 100)
+downsample_z: 256  # Downsample histogram direction to N bins
+y_crop_top: 90
+y_crop_bottom: 90
+z_crop_front: 25
+
+
+voxel_size: [256, 128, 128]  # (D, H, W) for model - matches target_size after conversion
+patch_size: [256, 16, 16]  # (patch_d, patch_h, patch_w)
+encoder_embed_dim: 768
+encoder_depth: 6
+encoder_num_heads: 6
+drop_rate: 0.2
+attn_drop_rate: 0.2
+drop_path_rate: 0.2
+
+test_voxel_dirs:
+- /path/to/ghost_dataset/scene009/data/hist002
+- /path/to/ghost_dataset/scene009/data/hist003
+- /path/to/ghost_dataset/scene009/data/hist004
+- /path/to/ghost_dataset/scene009/data/hist005
+- /path/to/ghost_dataset/scene009/data/hist006
+- /path/to/ghost_dataset/scene009/data/hist007
+- /path/to/ghost_dataset/scene009/data/hist008
+- /path/to/ghost_dataset/scene009/data/hist009
+- /path/to/ghost_dataset/scene009/data/hist010
+- /path/to/ghost_dataset/scene009/data/hist011
+- /path/to/ghost_dataset/scene007/data/hist001
+- /path/to/ghost_dataset/scene007/data/hist002
+- /path/to/ghost_dataset/scene007/data/hist003
+- /path/to/ghost_dataset/scene007/data/hist004
+- /path/to/ghost_dataset/scene007/data/hist005
+- /path/to/ghost_dataset/scene007/data/hist006
+- /path/to/ghost_dataset/scene007/data/hist007
+- /path/to/ghost_dataset/scene007/data/hist008
+- /path/to/ghost_dataset/scene007/data/hist009
+- /path/to/ghost_dataset/scene007/data/hist010
+- /path/to/ghost_dataset/scene002/data/hist001
+- /path/to/ghost_dataset/scene002/data/hist002
+- /path/to/ghost_dataset/scene002/data/hist003
+- /path/to/ghost_dataset/scene002/data/hist004
+- /path/to/ghost_dataset/scene002/data/hist005
+- /path/to/ghost_dataset/scene002/data/hist006
+- /path/to/ghost_dataset/scene002/data/hist007
+- /path/to/ghost_dataset/scene002/data/hist008
+- /path/to/ghost_dataset/scene002/data/hist009
+- /path/to/ghost_dataset/scene002/data/hist010
+
+test_annotation_dirs:
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist002
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist003
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist004
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist005
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist006
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist007
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist008
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist009
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist010
+- /path/to/ghost_dataset/scene009/annotation_v1_expand/hist011
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist001
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist002
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist003
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist004
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist005
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist006
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist007
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist008
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist009
+- /path/to/ghost_dataset/scene007/annotation_v1_expand/hist010
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist001
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist002
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist003
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist004
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist005
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist006
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist007
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist008
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist009
+- /path/to/ghost_dataset/scene002/annotation_v1_expand/hist010
