@@ -1,9 +1,21 @@
 # Ghost-FWL Dataset
 
+## Dataset Download
+- [Download Link]()
+
 ## Dataset Structure
+- After installation, unzip and place the files in the following directory structure:
+
+- Please delete the following files as the original data is corrupted:
+    ```bash
+    rm ghost_dataset/scene003/annotation_v1/hist022/20250929162519_t01759130735367000000_000043_annotation_voxel.b2
+    rm ghost_dataset/scene003/annotation_v1_expand/hist022/20250929162519_t01759130735367000000_000043_annotation_voxel.b2
+    rm ghost_dataset/scene003/data/hist022/20250929162519_t01759130735367000000_000043_voxel.b2
+    ```
+
 ### Dataset for pretraining
 ```bash
-Pretraining/
+mae_dataset/
 ├── ghost/
 │   ├── YYYYMMDDHHMMSS_voxel_b2/
 │   │   ├── YYYYMMDDHHMMSS_{t}_{id}_voxel.b2
@@ -98,6 +110,3 @@ ghost_dataset/
     ```bash
     (400, 512, 700)
     ```
-
-## Dataset Download
-- [Download Link]()
