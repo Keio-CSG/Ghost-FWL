@@ -1,0 +1,29 @@
+output_dir: .
+data: /path/to/{data_root}/{scene}/data/{hist_id}/_voxel.b2
+# for prediction data
+annotation: /path/to/_prediction_voxel.b2
+upsample: false
+
+# for gt data
+# gt: true
+# annotation: /path/to/{data_root}/{scene}/annotation_{}/{hist_id}/_annotation_voxel.b2 # GT
+
+# Colorization mode for the point cloud. options: ['label', 'distance', 'none']
+color_mode: label
+
+show_noise: false
+show_undefined: false
+
+# Radius around ghost points to remove neighbors.
+ghost_removal_mode: none   # "skip_points" or "remove_neighbors"
+remove_ghost_neighbors_radius: 0.0 # "remove_neighbors",
+
+# Manual offset for annotation placement.
+x_range: [0, 400]
+y_range: [90, 422]
+y_offset: 90
+x_offset: 0
+bin_offset: 25
+
+original_depth: 675
+target_depth: 256

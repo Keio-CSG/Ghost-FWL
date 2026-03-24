@@ -1,0 +1,56 @@
+###########################################################
+# test
+###########################################################
+seed: 42
+batch_size: 8  # Reduced batch size for 3D data
+device: cuda:0
+
+###########################################################
+# Input - Voxel Data Paths
+###########################################################
+checkpoint_path: ''
+
+###########################################################
+# Output, log
+###########################################################
+config_name: test
+is_train: false
+is_log: false # Set to true to enable wandb logging
+log_interval: 100
+output_dir: /path/to/output_dir
+use_threshold_prediction: true
+prediction_threshold: 0.5
+
+###########################################################
+# Labels to ignore during training and visualization
+###########################################################
+ignore_visualize_labels: []  # Labels to ignore in visualization (default: noise class)
+ignore_train_labels: []     # Labels to ignore in training (default: invalid labels)
+
+
+###########################################################
+# dataset, dataloader
+###########################################################
+num_workers: 8
+divide: 1  # Use full dataset
+
+###########################################################
+# Model Configuration
+###########################################################
+model_name: fwl_mae
+num_classes: 4
+n_channels: 1  # Single channel voxel input
+target_size: [128, 128, 256]  # Use original size after downsampling: ~(400, 512, 100)
+downsample_z: 256  # Downsample histogram direction to N bins
+y_crop_top: 90
+y_crop_bottom: 90
+z_crop_front: 25
+
+voxel_size: [256, 128, 128]  # (D, H, W) for model - matches target_size after conversion
+patch_size: [256, 16, 16]  # (patch_d, patch_h, patch_w)
+encoder_embed_dim: 768
+encoder_depth: 6
+encoder_num_heads: 6
+
+test_voxel_dirs:
+- /path/to/voxel_dir
