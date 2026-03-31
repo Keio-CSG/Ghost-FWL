@@ -354,15 +354,11 @@
       <!-- TODO: Replace with your video description -->
 
       <div class="image is-fullwidth">
-        <img src="static/images/dataset.png" alt="Dataset overview figure" class="dataset-figure" loading="lazy">
+        <img src="static/images/teaser.png" alt="Teaser figure" class="dataset-figure" loading="lazy">
       </div>
-      <h2 class="subtitle has-text-centered">
-        <strong>Overview of the Ghost-FWL.</strong>
-        Left: Our dataset includes both indoor and outdoor scenes. Based on the dense 3D maps as shown in Scene, we annotated FWL data with semantic labels:
-        <em>Ghost</em> (red), <em>Object</em> (green), <em>Glass</em> (blue), <em>Noise</em>. Gray regions are excluded from annotation.
-        Right shows the data acquisition setup and dataset statistics, including the incident angle distribution and LiDAR positions examples.
-        Data were collected at three different times of day: Morning (AM10&ndash;12), Daytime (PM12&ndash;5), and Evening (PM5&ndash;7).
-      </h2>
+      <p class="has-text-centered">
+        LiDAR data often contains <strong>ghost</strong> points caused by multi-path reflections from glass and reflective materials (top right), which appear as spurious structures that do not physically exist. Ghost leads to substantial errors in tasks such as detection (left (a)) and localization and mapping (left (b)). We address this issue by introducing the Ghost-FWL dataset (bottom right) and a ghost removal framework.
+      </p>
     </div>
   </div>
 </section>
@@ -409,6 +405,17 @@
               Ghost-FWL addresses this gap by capturing complete temporal intensity histograms and providing peak-level annotations indicating the physical cause of each reflection (object, glass, ghost, or noise).
               Spanning 10 diverse scenes with 24,412 annotated frames and 7.5B peak-level labels, Ghost-FWL is 100&times; larger than prior annotated FWL datasets
               <a href="https://light.princeton.edu/publication/lidar-transformers/">[Scheuble et al.]</a>, enabling learning-based ghost detection and removal at the waveform level.
+            </p>
+
+            <div class="image is-fullwidth">
+              <img src="static/images/dataset_supp.png" alt="Supplementary dataset figure" class="dataset-figure" loading="lazy">
+            </div>
+            <p class="has-text-centered">
+              <strong class="fwltable__caption">Overview of the Ghost-FWL.</strong>
+              Left: Our dataset includes both indoor and outdoor scenes. Based on the dense 3D maps as shown in Scene, we annotated FWL data with semantic labels:
+              <em>Ghost</em> (red), <em>Object</em> (green), <em>Glass</em> (blue), <em>Noise</em>. Gray regions are excluded from annotation.
+              Right shows the data acquisition setup and dataset statistics, including the incident angle distribution and LiDAR positions examples.
+              Data were collected at three different times of day: Morning (AM10&ndash;12), Daytime (PM12&ndash;5), and Evening (PM5&ndash;7).
             </p>
 
             <h3 class="title is-5">Dataset Point Clouds</h3>
