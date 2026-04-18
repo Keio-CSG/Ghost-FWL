@@ -26,7 +26,7 @@ Taro Beppu<sup>2</sup> &emsp;
 
 <a href='https://keio-csg.github.io/Ghost-FWL/'><img
 src='https://img.shields.io/badge/Project-Page-blue'></a>
-<!-- <a href='#'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a> -->
+<a href='https://arxiv.org/abs/2603.28224'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a>
 </div>
 
 <div align="center">
