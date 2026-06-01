@@ -2,7 +2,7 @@
 
 # Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal
 
-[Kazuma Ikeda](https://github.com/ike-kazu)<sup>1*</sup> &emsp;
+[Kazuma Ikeda](https://ike-kazu.github.io/kazuma-ikeda.github.io/)<sup>1*</sup> &emsp;
 [Ryosei Hara](https://ryhara.github.io/)<sup>1*</sup> &emsp;
 
 Rokuto Nagata<sup>1</sup> &emsp;
