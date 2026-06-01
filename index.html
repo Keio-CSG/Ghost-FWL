@@ -256,7 +256,7 @@
             <!-- TODO: Replace with your paper title -->
             <h1 class="title is-1 publication-title">Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal</h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><a href="https://ike-kazu.github.io/kazuma-ikeda.github.io/" target="_blank">Kazuma Ikeda</a><sup>*,1</sup>,</span>
+              <span class="author-block">Kazuma Ikeda<sup>*,1</sup>,</span>
               <span class="author-block"><a href="https://ryhara.github.io/" target="_blank">Ryosei Hara</a><sup>*,1</sup>,</span>
 
               <!-- ↓ここを各著者の所属に合わせて 1 / 2 / 1,2 に変更 -->
@@ -281,10 +281,9 @@
 
             <div class="column has-text-centered">
               <div class="publication-links">
-                    <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block link-block-pending">
-                  <a href="" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark is-link-pending">
+                <span class="link-block">
+                  <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Ikeda_Ghost-FWL_A_Large-Scale_Full-Waveform_LiDAR_Dataset_for_Ghost_Detection_and_CVPR_2026_paper.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-file-pdf"></i>
                   </span>
@@ -292,10 +291,9 @@
                   </a>
                 </span>
 
-                <!-- TODO: Add your supplementary material PDF or remove this section -->
-                <span class="link-block link-block-pending">
-                  <a href="" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark is-link-pending">
+                <span class="link-block">
+                  <a href="https://openaccess.thecvf.com/content/CVPR2026/html/Ikeda_Ghost-FWL_A_Large-Scale_Full-Waveform_LiDAR_Dataset_for_Ghost_Detection_and_CVPR_2026_paper.html" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-file-pdf"></i>
                   </span>
@@ -303,7 +301,16 @@
                   </a>
                 </span>
 
-                <!-- TODO: Replace with your GitHub repository URL -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2603.28224" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                  </a>
+                </span>
+
                 <span class="link-block">
                   <a href="https://github.com/Keio-CSG/Ghost-FWL.git" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
@@ -324,14 +331,25 @@
                   </a>
                 </span>
 
-                <!-- TODO: Update with your arXiv paper ID -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2603.28224" target="_blank"
+                  <a href="https://www.youtube.com/watch?v=-Eo75ZXnUvM" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                    <i class="ai ai-arxiv"></i>
+                    <i class="fab fa-youtube"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>Video</span>
+                  </a>
+                </span>
+                
+                
+
+                <span class="link-block">
+                  <a href="https://cvpr.thecvf.com/virtual/2026/poster/37610" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                  <i class="fas fa-globe"></i>  
+                  </span>
+                  <span>CVPR Page</span>
                   </a>
                 </span>
             </div>
@@ -354,15 +372,11 @@
       <!-- TODO: Replace with your video description -->
 
       <div class="image is-fullwidth">
-        <img src="static/images/dataset.png" alt="Dataset overview figure" class="dataset-figure" loading="lazy">
+        <img src="static/images/teaser.png" alt="Teaser figure" class="dataset-figure" loading="lazy">
       </div>
-      <h2 class="subtitle has-text-centered">
-        <strong>Overview of the Ghost-FWL.</strong>
-        Left: Our dataset includes both indoor and outdoor scenes. Based on the dense 3D maps as shown in Scene, we annotated FWL data with semantic labels:
-        <em>Ghost</em> (red), <em>Object</em> (green), <em>Glass</em> (blue), <em>Noise</em>. Gray regions are excluded from annotation.
-        Right shows the data acquisition setup and dataset statistics, including the incident angle distribution and LiDAR positions examples.
-        Data were collected at three different times of day: Morning (AM10&ndash;12), Daytime (PM12&ndash;5), and Evening (PM5&ndash;7).
-      </h2>
+      <p class="has-text-centered">
+        LiDAR data often contains <strong>ghost</strong> points caused by multi-path reflections from glass and reflective materials (top right), which appear as spurious structures that do not physically exist. Ghost leads to substantial errors in tasks such as detection (left (a)) and localization and mapping (left (b)). We address this issue by introducing the Ghost-FWL dataset (bottom right) and a ghost removal framework.
+      </p>
     </div>
   </div>
 </section>
@@ -387,6 +401,10 @@
             </p>
           </div>
 
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/-Eo75ZXnUvM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+
         </div>
       </div>
     </div>
@@ -409,6 +427,17 @@
               Ghost-FWL addresses this gap by capturing complete temporal intensity histograms and providing peak-level annotations indicating the physical cause of each reflection (object, glass, ghost, or noise).
               Spanning 10 diverse scenes with 24,412 annotated frames and 7.5B peak-level labels, Ghost-FWL is 100&times; larger than prior annotated FWL datasets
               <a href="https://light.princeton.edu/publication/lidar-transformers/">[Scheuble et al.]</a>, enabling learning-based ghost detection and removal at the waveform level.
+            </p>
+
+            <div class="image is-fullwidth">
+              <img src="static/images/dataset_supp.png" alt="Supplementary dataset figure" class="dataset-figure" loading="lazy">
+            </div>
+            <p class="has-text-centered">
+              <strong class="fwltable__caption">Overview of the Ghost-FWL.</strong>
+              Left: Our dataset includes both indoor and outdoor scenes. Based on the dense 3D maps as shown in Scene, we annotated FWL data with semantic labels:
+              <em>Ghost</em> (red), <em>Object</em> (green), <em>Glass</em> (blue), <em>Noise</em>. Gray regions are excluded from annotation.
+              Right shows the data acquisition setup and dataset statistics, including the incident angle distribution and LiDAR positions examples.
+              Data were collected at three different times of day: Morning (AM10&ndash;12), Daytime (PM12&ndash;5), and Evening (PM5&ndash;7).
             </p>
 
             <h3 class="title is-5">Dataset Point Clouds</h3>
@@ -756,17 +785,18 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code">
-        <code>
-          <!-- @article{YourPaperKey2024,
-          title={Your Paper Title Here},
-          author={First Author and Second Author and Third Author},
-          journal={Conference/Journal Name},
-          year={2024},
-          url={https://your-domain.com/your-project-page}
-          } -->TBA
-        </code>
-      </pre>
+<pre id="bibtex-code">
+<code>
+@InProceedings{Ikeda_2026_CVPR,
+    author    = {Ikeda, Kazuma and Hara, Ryosei and Nagata, Rokuto and Sako, Ozora and Ding, Zihao and Kado, Takahiro and Fujioka, Ibuki and Beppu, Taro and Isogawa, Mariko and Yoshioka, Kentaro},
+    title     = {Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {17164-17173}
+}
+</code>
+</pre>
     </div>
 </section>
 <!--End BibTex citation -->
