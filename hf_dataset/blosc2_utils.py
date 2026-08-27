@@ -1,17 +1,14 @@
-"""Blosc2 helpers for the WebDataset conversion, self-contained in hf_dataset/.
+"""Blosc2 helper for the WebDataset conversion.
 
-Kept separate from src/ so the dataset packaging work does not touch the
-training code. When the WebDataset loading pipeline is integrated into
-training later, this can move into src/utils.
+The decoder now lives in src/utils (shared with the src/data WebDataset loaders);
+this module re-exports it so the conversion scripts keep working unchanged.
 """
 
-import blosc2
-import numpy as np
+import pathlib
+import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 
-def load_blosc2_bytes(data: bytes) -> np.ndarray:
-    """Decode a Blosc2 payload (the raw content of a .b2 file) into an ndarray.
+from src.utils.custom_blosc2 import load_blosc2_bytes  # noqa: E402
 
-    In-memory counterpart of src.utils.load_blosc2(), e.g. for WebDataset tar members.
-    """
-    return blosc2.unpack_array2(data)
+__all__ = ["load_blosc2_bytes"]

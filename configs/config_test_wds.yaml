@@ -1,0 +1,84 @@
+###########################################################
+# training
+###########################################################
+seed: 42
+batch_size: 8 # Reduced batch size for 3D data
+device: cuda:0
+checkpoint_path: ''
+use_threshold_prediction: true
+prediction_threshold: 0.5
+
+###########################################################
+# Output, log
+###########################################################
+config_name: test_wds
+is_train: false
+is_log: false  # Set to true to enable wandb logging
+
+###########################################################
+# dataset, dataloader
+###########################################################
+num_workers: 8
+divide: 1  # Use full dataset
+
+###########################################################
+# Model Configuration
+###########################################################
+model_name: fwl_mae
+num_classes: 4
+n_channels: 1  # Single channel voxel input
+target_size: [128, 128, 256]  # Use original size after downsampling: ~(400, 512, 100)
+downsample_z: 256  # Downsample histogram direction to N bins
+y_crop_top: 90
+y_crop_bottom: 90
+z_crop_front: 25
+
+
+voxel_size: [256, 128, 128]  # (D, H, W) for model - matches target_size after conversion
+patch_size: [256, 16, 16]  # (patch_d, patch_h, patch_w)
+encoder_embed_dim: 768
+encoder_depth: 6
+encoder_num_heads: 6
+drop_rate: 0.2
+attn_drop_rate: 0.2
+drop_path_rate: 0.2
+
+###########################################################
+# Input - WebDataset shards (ryhara/Ghost-FWL, config: ghost)
+###########################################################
+# Local or "hf://ryhara/Ghost-FWL"
+wds_root: /path/to/Ghost-FWL-wds
+wds_annotation_key: annotation_expand
+wds_cache_dir: ''
+
+test_wds_groups:
+- scene009/hist002
+- scene009/hist003
+- scene009/hist004
+- scene009/hist005
+- scene009/hist006
+- scene009/hist007
+- scene009/hist008
+- scene009/hist009
+- scene009/hist010
+- scene009/hist011
+- scene007/hist001
+- scene007/hist002
+- scene007/hist003
+- scene007/hist004
+- scene007/hist005
+- scene007/hist006
+- scene007/hist007
+- scene007/hist008
+- scene007/hist009
+- scene007/hist010
+- scene002/hist001
+- scene002/hist002
+- scene002/hist003
+- scene002/hist004
+- scene002/hist005
+- scene002/hist006
+- scene002/hist007
+- scene002/hist008
+- scene002/hist009
+- scene002/hist010

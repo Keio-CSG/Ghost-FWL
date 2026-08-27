@@ -1,4 +1,4 @@
-from .custom_blosc2 import load_blosc2, load_npy_file, save_blosc2
+from .custom_blosc2 import load_blosc2, load_blosc2_bytes, load_npy_file, save_blosc2
 from .factory import create_optimizer, create_scheduler, get_loss_fn, get_model
 from .log import log_critical, log_error, log_info, log_warning
 from .representation_voxel import (
@@ -21,6 +21,7 @@ from .training_utils import load_checkpoint, set_seed, set_wandb
 
 __all__ = [
     "load_blosc2",
+    "load_blosc2_bytes",
     "load_npy_file",
     "save_blosc2",
     "downsample_histogram_direction",

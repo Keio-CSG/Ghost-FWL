@@ -1,0 +1,415 @@
+###########################################################
+# training
+###########################################################
+seed: 42
+lr: 0.0001
+batch_size: 32 # Reduced batch size for 3D data
+epochs: 100
+device: cuda:0
+pretrained_model_path: ''
+freeze_encoder: true
+
+###########################################################
+# Output, log
+###########################################################
+config_name: train_wds
+save_model_dir: /path/to/Ghost-FWL/data/save/
+save_model_interval: 10
+is_train: true
+is_log: false  # Set to true to enable wandb logging
+log_interval: 100
+
+###########################################################
+# dataset, dataloader
+###########################################################
+num_workers: 8
+divide: 1  # Use full dataset
+
+###########################################################
+# Model Configuration
+###########################################################
+model_name: fwl_mae
+num_classes: 4
+n_channels: 1  # Single channel voxel input
+target_size: [128, 128, 256]  # Use original size after downsampling: ~(400, 512, 100)
+downsample_z: 256  # Downsample histogram direction to N bins
+y_crop_top: 90
+y_crop_bottom: 90
+z_crop_front: 25
+
+
+voxel_size: [256, 128, 128]  # (D, H, W) for model - matches target_size after conversion
+patch_size: [256, 16, 16]  # (patch_d, patch_h, patch_w)
+encoder_embed_dim: 768
+encoder_depth: 6
+encoder_num_heads: 6
+drop_rate: 0.2
+attn_drop_rate: 0.2
+drop_path_rate: 0.2
+###########################################################
+# loss, optimizer, scheduler
+###########################################################
+loss_fn: focal
+
+focal_alpha: [0.0001, 0.05, 0.25, 0.7]
+focal_gamma: 2.0
+
+# Optimizer settings
+optimizer: adamw    # adamw or adam
+scheduler: ''    # Options: step, exponential, cosine, cosine_warm_restarts, or empty string for no scheduler
+
+###########################################################
+# Input - WebDataset shards (ryhara/Ghost-FWL, config: ghost)
+###########################################################
+# Local or "hf://ryhara/Ghost-FWL"
+wds_root: /path/to/Ghost-FWL-wds
+# annotation_expand (annotation_v*_expand) or annotation (annotation_v*)
+wds_annotation_key: annotation_expand
+wds_shuffle_buffer: 16
+wds_cache_dir: ''
+
+# Group selectors: "scene003" (all hists), "scene003/hist012", "scene00[1-5]/hist*"
+train_wds_groups:
+- scene005/hist001
+- scene005/hist002
+- scene005/hist003
+- scene005/hist005
+- scene005/hist006
+- scene005/hist007
+- scene005/hist008
+- scene005/hist009
+- scene005/hist010
+- scene005/hist011
+- scene005/hist012
+- scene005/hist015
+- scene005/hist018
+- scene005/hist019
+- scene005/hist020
+- scene005/hist021
+- scene005/hist022
+- scene005/hist025
+- scene005/hist026
+- scene005/hist027
+- scene005/hist028
+- scene005/hist029
+- scene005/hist030
+- scene005/hist031
+- scene005/hist032
+- scene005/hist033
+- scene005/hist034
+- scene005/hist035
+- scene005/hist037
+- scene005/hist038
+- scene005/hist039
+- scene005/hist040
+- scene005/hist042
+- scene005/hist043
+- scene005/hist044
+- scene005/hist046
+- scene005/hist047
+- scene005/hist049
+- scene001/hist001
+- scene001/hist004
+- scene001/hist005
+- scene001/hist006
+- scene001/hist007
+- scene001/hist009
+- scene001/hist010
+- scene001/hist011
+- scene001/hist012
+- scene001/hist013
+- scene001/hist015
+- scene001/hist016
+- scene001/hist017
+- scene001/hist018
+- scene001/hist019
+- scene001/hist020
+- scene001/hist021
+- scene001/hist023
+- scene001/hist024
+- scene001/hist025
+- scene001/hist026
+- scene001/hist027
+- scene001/hist028
+- scene001/hist029
+- scene001/hist031
+- scene001/hist033
+- scene001/hist035
+- scene001/hist036
+- scene001/hist037
+- scene001/hist038
+- scene001/hist039
+- scene001/hist040
+- scene001/hist041
+- scene001/hist042
+- scene001/hist043
+- scene001/hist044
+- scene001/hist045
+- scene001/hist046
+- scene001/hist047
+- scene001/hist048
+- scene001/hist050
+- scene006/hist002
+- scene006/hist003
+- scene006/hist004
+- scene006/hist005
+- scene006/hist006
+- scene006/hist007
+- scene006/hist008
+- scene006/hist009
+- scene006/hist010
+- scene006/hist011
+- scene006/hist012
+- scene006/hist013
+- scene006/hist014
+- scene006/hist015
+- scene006/hist016
+- scene006/hist017
+- scene006/hist018
+- scene006/hist019
+- scene006/hist020
+- scene006/hist021
+- scene006/hist022
+- scene006/hist024
+- scene006/hist026
+- scene006/hist028
+- scene006/hist029
+- scene006/hist030
+- scene006/hist031
+- scene006/hist033
+- scene006/hist035
+- scene006/hist038
+- scene006/hist039
+- scene006/hist041
+- scene006/hist042
+- scene006/hist043
+- scene006/hist046
+- scene006/hist047
+- scene006/hist048
+- scene006/hist049
+- scene006/hist050
+- scene004/hist001
+- scene004/hist002
+- scene004/hist003
+- scene004/hist004
+- scene004/hist005
+- scene004/hist006
+- scene004/hist007
+- scene004/hist008
+- scene004/hist009
+- scene004/hist010
+- scene004/hist011
+- scene004/hist012
+- scene004/hist013
+- scene004/hist014
+- scene004/hist016
+- scene004/hist018
+- scene004/hist019
+- scene004/hist020
+- scene004/hist021
+- scene004/hist022
+- scene004/hist023
+- scene004/hist024
+- scene004/hist025
+- scene004/hist026
+- scene004/hist027
+- scene004/hist028
+- scene004/hist029
+- scene004/hist031
+- scene004/hist032
+- scene004/hist034
+- scene004/hist035
+- scene004/hist037
+- scene004/hist038
+- scene004/hist039
+- scene003/hist001
+- scene003/hist002
+- scene003/hist003
+- scene003/hist004
+- scene003/hist005
+- scene003/hist006
+- scene003/hist007
+- scene003/hist008
+- scene003/hist009
+- scene003/hist010
+- scene003/hist011
+- scene003/hist012
+- scene003/hist013
+- scene003/hist014
+- scene003/hist015
+- scene003/hist016
+- scene003/hist017
+- scene003/hist018
+- scene003/hist019
+- scene003/hist020
+- scene003/hist021
+- scene003/hist022
+- scene003/hist023
+- scene003/hist024
+- scene003/hist025
+- scene003/hist026
+- scene003/hist027
+- scene003/hist028
+- scene003/hist029
+- scene003/hist030
+- scene003/hist031
+- scene003/hist032
+- scene003/hist033
+- scene003/hist034
+- scene003/hist035
+- scene003/hist036
+- scene003/hist037
+- scene003/hist038
+- scene003/hist039
+- scene003/hist040
+- scene003/hist041
+- scene003/hist042
+- scene003/hist043
+- scene003/hist044
+- scene003/hist045
+- scene010/hist001
+- scene010/hist002
+- scene010/hist003
+- scene010/hist004
+- scene010/hist005
+- scene010/hist006
+- scene010/hist008
+- scene010/hist009
+- scene010/hist010
+- scene010/hist011
+- scene010/hist012
+- scene010/hist013
+- scene010/hist016
+- scene010/hist018
+- scene010/hist019
+- scene010/hist020
+- scene010/hist022
+- scene010/hist024
+- scene010/hist025
+- scene010/hist026
+- scene010/hist027
+- scene010/hist029
+- scene010/hist030
+- scene010/hist031
+- scene010/hist032
+- scene010/hist033
+- scene010/hist034
+- scene010/hist035
+- scene010/hist036
+- scene010/hist037
+- scene010/hist038
+- scene010/hist042
+- scene010/hist043
+- scene010/hist045
+- scene010/hist046
+- scene010/hist049
+- scene010/hist050
+- scene010/hist051
+- scene010/hist052
+- scene010/hist053
+- scene010/hist054
+- scene010/hist055
+- scene008/hist007
+- scene008/hist008
+- scene008/hist009
+- scene008/hist010
+- scene008/hist011
+- scene008/hist012
+- scene008/hist013
+- scene008/hist014
+- scene008/hist015
+- scene008/hist016
+- scene008/hist018
+- scene008/hist019
+- scene008/hist022
+- scene008/hist023
+- scene008/hist024
+- scene008/hist025
+- scene008/hist026
+- scene008/hist027
+- scene008/hist028
+- scene008/hist029
+- scene008/hist030
+- scene008/hist031
+- scene008/hist032
+- scene008/hist033
+- scene008/hist034
+- scene008/hist035
+- scene008/hist036
+- scene008/hist037
+- scene008/hist038
+- scene008/hist039
+- scene008/hist040
+- scene008/hist041
+- scene008/hist042
+- scene008/hist043
+- scene008/hist044
+- scene008/hist045
+- scene008/hist046
+- scene008/hist047
+- scene008/hist048
+- scene008/hist049
+- scene008/hist050
+
+# Leave empty to split train_wds_groups 8:2 by key hash instead
+valid_wds_groups:
+- scene005/hist004
+- scene005/hist013
+- scene005/hist014
+- scene005/hist016
+- scene005/hist017
+- scene005/hist023
+- scene005/hist024
+- scene005/hist036
+- scene005/hist041
+- scene005/hist045
+- scene005/hist048
+- scene005/hist050
+- scene001/hist002
+- scene001/hist003
+- scene001/hist008
+- scene001/hist014
+- scene001/hist022
+- scene001/hist030
+- scene001/hist032
+- scene001/hist034
+- scene001/hist049
+- scene006/hist001
+- scene006/hist023
+- scene006/hist025
+- scene006/hist027
+- scene006/hist032
+- scene006/hist034
+- scene006/hist036
+- scene006/hist037
+- scene006/hist040
+- scene006/hist044
+- scene006/hist045
+- scene004/hist015
+- scene004/hist017
+- scene004/hist030
+- scene004/hist033
+- scene004/hist036
+- scene003/hist046
+- scene003/hist047
+- scene003/hist048
+- scene003/hist049
+- scene003/hist050
+- scene010/hist007
+- scene010/hist014
+- scene010/hist015
+- scene010/hist017
+- scene010/hist021
+- scene010/hist023
+- scene010/hist028
+- scene010/hist039
+- scene010/hist040
+- scene010/hist041
+- scene010/hist044
+- scene010/hist047
+- scene010/hist048
+- scene008/hist001
+- scene008/hist002
+- scene008/hist003
+- scene008/hist005
+- scene008/hist006
