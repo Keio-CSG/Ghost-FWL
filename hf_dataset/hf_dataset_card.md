@@ -11,6 +11,30 @@ tags:
   - lidar
   - point-cloud
   - webdataset
+extra_gated_heading: "Request access to Ghost-FWL"
+extra_gated_prompt: >-
+  Ghost-FWL is released under CC BY-NC 4.0. By requesting access you agree to use
+  the dataset for non-commercial research or educational purposes only, to not
+  redistribute the raw data, and to cite the Ghost-FWL paper in any resulting
+  publication.
+extra_gated_fields:
+  First Name: text
+  Last Name: text
+  Date of birth: date_picker
+  Country: country
+  Affiliation: text
+  Job title:
+    type: select
+    options:
+      - Undergraduate student
+      - Master's student
+      - Ph.D. student
+      - Postdoctoral researcher
+      - University faculty / Professor
+      - Industry researcher
+      - Engineer
+  I agree to the terms above: checkbox
+extra_gated_button_content: "Agree and request access"
 ---
 
 # Ghost-FWL
