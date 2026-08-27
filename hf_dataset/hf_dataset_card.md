@@ -7,9 +7,10 @@ configs:
   - config_name: mae
     data_files: "mae/*.tar"
 tags:
-  - webdataset
+  - full-waveform-lidar
   - lidar
   - point-cloud
+  - webdataset
 ---
 
 # Ghost-FWL
@@ -17,8 +18,24 @@ tags:
 Full-waveform LiDAR voxel dataset for ghost point detection, distributed as
 [WebDataset](https://github.com/webdataset/webdataset) shards.
 
-There are no semantic train/validation/test splits; all samples appear under the
-`train` split, which is just how `datasets` names a split-less dataset.
+<a href='https://keio-csg.github.io/Ghost-FWL/'><img
+src='https://img.shields.io/badge/Project-Page-blue'></a>
+<a href='https://arxiv.org/abs/2603.28224'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a>
+<a href='https://github.com/Keio-CSG/Ghost-FWL'><img src='https://img.shields.io/badge/Code-GitHub-black'></a>
+</div>
+
+
+
+## Citation
+```bibtex
+@inproceedings{ikeda2026ghostfwl,
+  title = {Ghost-FWL: A Large-Scale Full-Waveform LiDAR Dataset for Ghost Detection and Removal},
+  author = {Ikeda, Kazuma and Hara, Ryosei and Nagata, Rokuto and Sako, Ozora and Ding, Zihao and Kado, Takahiro and Fujioka, Ibuki and Beppu, Taro and Isogawa, Mariko and Yoshioka, Kentaro},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year = {2026},
+}
+```
+
 
 ## Configs
 
@@ -86,7 +103,3 @@ that stream these shards with the same preprocessing as the original directory
 layout (`src/data/dataset_fwl_wds.py`, `src/data/dataset_fwl_mae_wds.py`); set
 `wds_root: hf://ryhara/Ghost-FWL` in `configs/config_*_wds.yaml`.
 
-## Known issues
-
-One frame (`scene003/hist022/20250929162519_t01759130735367000000_000043`) is
-corrupted in the original recordings and is excluded from this dataset.
