@@ -27,6 +27,7 @@ Taro Beppu<sup>2</sup> &emsp;
 <a href='https://keio-csg.github.io/Ghost-FWL/'><img
 src='https://img.shields.io/badge/Project-Page-blue'></a>
 <a href='https://arxiv.org/abs/2603.28224'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a>
+<a href='https://huggingface.co/datasets/ryhara/Ghost-FWL'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow'></a>
 </div>
 
 <div align="center">
@@ -60,7 +61,7 @@ This is the official implementation of **[Ghost-FWL](https://keio-csg.github.io/
 ## Dataset
 See [README_dataset.md](docs/README_dataset.md) for more details.
 
-## Hugging Face (Updated on 2026-08)
+## Hugging Face Dataset (Updated on 2026-08)
 See [README_huggingface.md](docs/README_huggingface.md) for more details.
 
 ## Pretrain
