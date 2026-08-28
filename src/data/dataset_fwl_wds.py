@@ -1,6 +1,6 @@
 """WebDataset-backed counterpart of FWLDataset (ghost config of ryhara/Ghost-FWL).
 
-Reads the shards written by hf_dataset/convert_to_webdataset.py and yields sample
+Reads the WebDataset shards of ryhara/Ghost-FWL and yields sample
 dicts with exactly the same keys / dtypes / shapes as FWLDataset.__getitem__:
 
     {"frame_id", "scene_id", "hist_id", "voxel_grid" (X, Y, Z), "annotation" (X, Y, Z)}

@@ -17,7 +17,7 @@ from src.config.config import TestConfig, TrainingConfig
 @dataclass
 class WDSTrainingConfig(TrainingConfig):
     config_name: str = "train_wds"
-    # Local output of hf_dataset/convert_to_webdataset.py, or "hf://ryhara/Ghost-FWL"
+    # Local directory with <config>/<config>-NNNNNN.tar shards, or "hf://ryhara/Ghost-FWL"
     wds_root: str = ""
     # "annotation_expand" (annotation_v*_expand, default) or "annotation" (annotation_v*)
     wds_annotation_key: str = "annotation_expand"

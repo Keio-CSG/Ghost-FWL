@@ -60,6 +60,9 @@ This is the official implementation of **[Ghost-FWL](https://keio-csg.github.io/
 ## Dataset
 See [README_dataset.md](docs/README_dataset.md) for more details.
 
+## Hugging Face (Updated on 2026-08)
+See [README_huggingface.md](docs/README_huggingface.md) for more details.
+
 ## Pretrain
 ```bash
 uv run python scripts/run_train.py --config configs/config_pretrain.yaml

@@ -7,7 +7,7 @@ Covers:
   * group selectors (fnmatch patterns on "scene001/hist003", "ghost/2025..." ...)
   * deterministic key-hash based train/valid splitting and `divide` subsampling
 
-Shard layout (see hf_dataset/convert_to_webdataset.py):
+Shard layout (ryhara/Ghost-FWL on the Hub, see docs/README_huggingface.md):
 
     <root>/<config>/<config>-NNNNNN.tar   + manifest.json  [+ shard_index.json]
 """
