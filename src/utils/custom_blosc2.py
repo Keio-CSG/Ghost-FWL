@@ -18,3 +18,11 @@ def save_blosc2(path: Union[str, pathlib.Path], x: np.ndarray) -> None:
 
 def load_blosc2(path: Union[str, pathlib.Path]) -> np.ndarray:
     return blosc2.load_array(path)
+
+
+def load_blosc2_bytes(data: bytes) -> np.ndarray:
+    """Decode a Blosc2 payload (raw content of a .b2 file) into an ndarray.
+
+    In-memory counterpart of load_blosc2(), e.g. for WebDataset tar members.
+    """
+    return blosc2.unpack_array2(data)
