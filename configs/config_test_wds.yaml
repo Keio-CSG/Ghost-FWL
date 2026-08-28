@@ -49,7 +49,7 @@ drop_path_rate: 0.2
 # Local /path/to/Ghost-FWL-wds or "hf://ryhara/Ghost-FWL"
 wds_root: hf://ryhara/Ghost-FWL
 wds_annotation_key: annotation_expand
-wds_cache_dir: ''  # Recommended for hf:// roots: shards are downloaded to this dir (resumable, sha256-verified) and read locally
+wds_cache_dir: ''  # hf:// roots only. Empty: stream shards over HTTP with Range-resume (no disk). Set: cache shards here (resumable, sha256-verified)
 
 test_wds_groups:
 - scene009/hist002

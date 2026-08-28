@@ -66,7 +66,7 @@ wds_root: hf://ryhara/Ghost-FWL
 # annotation_expand (annotation_v*_expand) or annotation (annotation_v*)
 wds_annotation_key: annotation_expand
 wds_shuffle_buffer: 16
-wds_cache_dir: ''  # Recommended for hf:// roots: shards are downloaded to this dir (resumable, sha256-verified) and read locally
+wds_cache_dir: ''  # hf:// roots only. Empty: stream shards over HTTP with Range-resume (no disk). Set: cache shards here (resumable, sha256-verified)
 
 # Group selectors: "scene003" (all hists), "scene003/hist012", "scene00[1-5]/hist*"
 train_wds_groups:
