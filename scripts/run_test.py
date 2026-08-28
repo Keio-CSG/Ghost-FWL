@@ -16,6 +16,11 @@ if __name__ == "__main__":
     # Load the configuration
     config: TestConfig | TrainingConfig = load_config_from_yaml(args.config)
     if config.model_name.lower() in ["fwl_mae"]:
-        test_fwl_mae_finetune(args.config)
+        if config.config_name == "test_wds":  # configs/wds/test.yaml -> WebDataset shards
+            from src.wds.training import test_fwl_mae_finetune_wds
+
+            test_fwl_mae_finetune_wds(args.config)
+        else:
+            test_fwl_mae_finetune(args.config)
     else:
         raise ValueError(f"Invalid model name: {config.model_name}")

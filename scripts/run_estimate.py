@@ -399,7 +399,13 @@ def main() -> None:
     if not os.path.exists(args.config):
         raise FileNotFoundError(f"Configuration file not found: {args.config}")
 
-    run_estimation(args.config)
+    config = load_config_from_yaml(args.config)
+    if config.config_name == "test_wds":  # configs/wds/estimate.yaml -> WebDataset shards
+        from src.wds.estimate import run_estimation_wds
+
+        run_estimation_wds(args.config)
+    else:
+        run_estimation(args.config)
 
 
 if __name__ == "__main__":

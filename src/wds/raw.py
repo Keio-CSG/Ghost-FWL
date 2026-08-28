@@ -1,7 +1,7 @@
 """Helpers for tools that need the WebDataset shards in a non-training shape.
 
 * `FWLWDSRawDataset`  — iterable over *full-frame* samples (crop / downsample but no
-  random crop), used by scripts/run_estimate_wds.py and scripts/extract_wds.py.
+  random crop), used by src/wds/estimate.py and scripts/extract_wds.py.
 * `WDSSequentialAccess` — wraps any wds IterableDataset so index-based tools
   (src/visualize/vis_pred.py) can call `len()`, `dataset[i]`, `get_sample_info(i)`.
   Samples are pulled sequentially and cached, so random access is cheap only for

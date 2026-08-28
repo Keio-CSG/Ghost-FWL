@@ -1,21 +1,18 @@
-"""Sliding-window inference on the WebDataset shards (ryhara/Ghost-FWL, ghost config).
+"""Sliding-window inference on the WebDataset shards (ghost config, config_name: test_wds).
 
-Same as scripts/run_estimate.py but reads frames selected by `test_wds_groups` from
-`wds_root` (local shards or hf://ryhara/Ghost-FWL). Predictions are written to
-`output_dir` as `{scene}_{hist}_{frame_id}_prediction_voxel.b2`, the layout expected by
-src/visualize/vis_pcd_batch.py and evaluate_pcd_batch.py.
-
-    uv run python scripts/run_estimate_wds.py --config configs/wds/estimate.yaml
+Same behaviour as scripts/run_estimate.py: predictions are written to `output_dir` as
+`{scene}_{hist}_{frame_id}_prediction_voxel.b2`, the layout expected by
+src/visualize/vis_pcd_batch.py and evaluate_pcd_batch.py. scripts/run_estimate.py
+dispatches here when the YAML uses a wds config.
 """
 
-import argparse
 import os
 import pathlib
+import sys
 from pprint import pprint
 
 import numpy as np
 import torch
-from run_estimate import SlidingWindowInference, upsampling_prediction
 from tqdm import tqdm
 
 from src.config import load_config_from_yaml
@@ -25,10 +22,21 @@ from src.wds.config import WDSTestConfig
 from src.wds.raw import FWLWDSRawDataset
 
 
+def _estimate_helpers():  # noqa: ANN202
+    """SlidingWindowInference / upsampling_prediction live in scripts/run_estimate.py."""
+    scripts_dir = pathlib.Path(__file__).resolve().parents[2] / "scripts"
+    if str(scripts_dir) not in sys.path:
+        sys.path.insert(0, str(scripts_dir))
+    from run_estimate import SlidingWindowInference, upsampling_prediction
+
+    return SlidingWindowInference, upsampling_prediction
+
+
 def run_estimation_wds(config_path: str) -> None:
+    SlidingWindowInference, upsampling_prediction = _estimate_helpers()
     config = load_config_from_yaml(config_path)
     if not isinstance(config, WDSTestConfig):
-        raise ValueError("run_estimate_wds.py expects a config with `config_name: test_wds`")
+        raise ValueError(f"config is not WDSTestConfig (config_name: test_wds): {config}")
     if not config.wds_root:
         raise ValueError("wds_root must be specified")
     if not config.output_dir:
@@ -90,16 +98,3 @@ def run_estimation_wds(config_path: str) -> None:
             log_info(f"Error processing {frame_id}: {exn}")
 
     log_info(f"Estimation completed: {n_done} predictions saved to {output_dir}")
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Run inference on wds shards (ghost config)")
-    parser.add_argument("--config", type=str, required=True, help="Path to test_wds config")
-    args = parser.parse_args()
-    if not os.path.exists(args.config):
-        raise FileNotFoundError(f"Configuration file not found: {args.config}")
-    run_estimation_wds(args.config)
-
-
-if __name__ == "__main__":
-    main()

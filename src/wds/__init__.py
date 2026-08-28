@@ -10,7 +10,11 @@ the directory-based implementation in src/data, src/config and src/training:
     dataset_mae.py  FWLMAEPWDSDataset  (mae config, pretrain)
     raw.py          FWLWDSRawDataset (full frames) and WDSSequentialAccess (index facade)
     config.py       WDSTrainingConfig / WDSTestConfig (config_name: train_wds / test_wds)
-    pretrain.py, finetune.py, test.py   entry points used by scripts/run_*_wds.py
+    training.py     train / test entry points (dataset construction; loops are shared)
+    estimate.py     sliding-window inference writing *_prediction_voxel.b2
+
+scripts/run_{train,test,estimate}.py dispatch here when the YAML's config_name is
+train_wds / test_wds (configs/wds/*.yaml); scripts/extract_wds.py unpacks shards to files.
 """
 
 from .config import WDSTestConfig, WDSTrainingConfig

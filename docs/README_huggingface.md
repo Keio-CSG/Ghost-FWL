@@ -50,10 +50,10 @@ directory-based implementation; the epoch loop, loss and collate are shared:
 | | directory version | WebDataset version |
 | --- | --- | --- |
 | YAML | `configs/config_{pretrain,train,test,estimate}.yaml` | `configs/wds/{pretrain,train,test,estimate}.yaml` |
-| scripts | `scripts/run_train.py` / `run_test.py` / `run_estimate.py` | `scripts/run_train_wds.py` / `run_test_wds.py` / `run_estimate_wds.py` |
+| scripts | `scripts/run_train.py` / `run_test.py` / `run_estimate.py` | same scripts (they dispatch on `config_name: train_wds` / `test_wds`) |
 | dataset | `src/data/dataset_fwl.py`, `dataset_fwl_mae.py` | `src/wds/dataset.py`, `dataset_mae.py` |
 | shard resolution / split | – | `src/wds/shards.py`, `fetch.py`, `raw.py` |
-| training / test loops | `src/training/fwl_mae_*.py` | `src/wds/{pretrain,finetune,test}.py` (dataset construction only; epoch loops are shared) |
+| training / test / estimate | `src/training/fwl_mae_*.py`, `scripts/run_estimate.py` | `src/wds/training.py`, `src/wds/estimate.py` (dataset construction only; loops are shared) |
 | config | `src/config/config.py` | `src/wds/config.py` |
 
 Keys specific to the wds YAMLs:
@@ -89,24 +89,24 @@ config is ~260 GB) or copy the shards locally and point `wds_root` at the direct
 
 ## Pretrain
 ```bash
-uv run python scripts/run_train_wds.py --config configs/wds/pretrain.yaml
+uv run python scripts/run_train.py --config configs/wds/pretrain.yaml
 ```
 
 ## Train
 ```bash
-uv run python scripts/run_train_wds.py --config configs/wds/train.yaml
+uv run python scripts/run_train.py --config configs/wds/train.yaml
 ```
 
 ## Test
 ```bash
-uv run python scripts/run_test_wds.py --config configs/wds/test.yaml
+uv run python scripts/run_test.py --config configs/wds/test.yaml
 ```
 
 Set `checkpoint_path` in the YAML. Add `wds_max_shards: 1` for a quick end-to-end check.
 
 ## Estimate
 ```bash
-uv run python scripts/run_estimate_wds.py --config configs/wds/estimate.yaml
+uv run python scripts/run_estimate.py --config configs/wds/estimate.yaml
 ```
 
 Sliding-window inference on the frames selected by `test_wds_groups`; writes
