@@ -1,0 +1,56 @@
+###########################################################
+# estimate (wds) - sliding-window inference, writes *_prediction_voxel.b2
+###########################################################
+seed: 42
+batch_size: 8
+device: cuda:0
+checkpoint_path: ''
+
+###########################################################
+# Output, log
+###########################################################
+config_name: test_wds
+is_train: false
+is_log: false
+log_interval: 100
+output_dir: /path/to/output_dir
+use_threshold_prediction: true
+prediction_threshold: 0.5
+
+ignore_visualize_labels: []
+ignore_train_labels: []
+
+###########################################################
+# dataset, dataloader
+###########################################################
+num_workers: 8
+divide: 1
+
+###########################################################
+# Model Configuration
+###########################################################
+model_name: fwl_mae
+num_classes: 4
+n_channels: 1
+target_size: [128, 128, 256]
+downsample_z: 256
+y_crop_top: 90
+y_crop_bottom: 90
+z_crop_front: 25
+
+voxel_size: [256, 128, 128]
+patch_size: [256, 16, 16]
+encoder_embed_dim: 768
+encoder_depth: 6
+encoder_num_heads: 6
+
+###########################################################
+# Input - WebDataset shards (ryhara/Ghost-FWL, config: ghost)
+###########################################################
+wds_root: hf://ryhara/Ghost-FWL
+wds_cache_dir: ''  # hf:// roots only. Empty: stream shards over HTTP with Range-resume (no disk). Set: cache shards here (resumable, sha256-verified)
+wds_max_shards: 0
+
+# Frames to estimate, e.g. scene009/hist002, scene009, scene00[1-5]/hist*
+test_wds_groups:
+- scene009/hist002

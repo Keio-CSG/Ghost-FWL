@@ -21,7 +21,8 @@ from sklearn.metrics import (
 
 from src.config import TestConfig, TrainingConfig, load_config_from_yaml
 from src.config.constants import CLASS_COLORS, LABEL_MAP
-from src.data import FWLDataset
+from src.data import FWLDataset, FWLWDSDataset
+from src.data.wds_raw import WDSSequentialAccess
 from src.utils import get_model, plot_temporal_histogram, select_random_point
 
 # Suppress specific sklearn warnings
@@ -440,28 +441,53 @@ class UNet3DPeakVisualizationTool:
             self.model.eval()
 
         # Setup dataset from config
-        if hasattr(self.config, "test_voxel_dirs") and hasattr(self.config, "test_annotation_dirs"):
-            voxel_dirs = self.config.test_voxel_dirs
-            annotation_dirs = self.config.test_annotation_dirs
-        elif hasattr(self.config, "voxel_dirs") and hasattr(self.config, "annotation_dirs"):
-            voxel_dirs = self.config.voxel_dirs
-            annotation_dirs = self.config.annotation_dirs
-        else:
-            raise ValueError(
-                "Config must contain voxel_dirs and annotation_dirs or test_voxel_dirs and test_annotation_dirs"
+        if hasattr(self.config, "wds_root"):
+            # WebDataset config (test_wds / train_wds): samples are streamed sequentially
+            groups = getattr(self.config, "test_wds_groups", None) or getattr(
+                self.config, "train_wds_groups", None
             )
+            wds_dataset = FWLWDSDataset(
+                root=self.config.wds_root,
+                groups=groups,
+                annotation_key=self.config.wds_annotation_key,
+                target_size=self.config.target_size,
+                downsample_z=self.config.downsample_z,
+                divide=1,
+                y_crop_top=self.config.y_crop_top,
+                y_crop_bottom=self.config.y_crop_bottom,
+                z_crop_front=self.config.z_crop_front,
+                z_crop_back=self.config.z_crop_back,
+                seed=self.config.seed,
+                shuffle=False,
+                cache_dir=self.config.wds_cache_dir or None,
+                max_shards=self.config.wds_max_shards,
+            )
+            self.dataset = WDSSequentialAccess(wds_dataset)
+        else:
+            if hasattr(self.config, "test_voxel_dirs") and hasattr(
+                self.config, "test_annotation_dirs"
+            ):
+                voxel_dirs = self.config.test_voxel_dirs
+                annotation_dirs = self.config.test_annotation_dirs
+            elif hasattr(self.config, "voxel_dirs") and hasattr(self.config, "annotation_dirs"):
+                voxel_dirs = self.config.voxel_dirs
+                annotation_dirs = self.config.annotation_dirs
+            else:
+                raise ValueError(
+                    "Config must contain voxel_dirs and annotation_dirs or test_voxel_dirs and test_annotation_dirs"
+                )
 
-        self.dataset = FWLDataset(
-            voxel_dirs=voxel_dirs,
-            annotation_dirs=annotation_dirs,
-            target_size=self.config.target_size,
-            downsample_z=self.config.downsample_z,
-            divide=1,
-            y_crop_top=self.config.y_crop_top,
-            y_crop_bottom=self.config.y_crop_bottom,
-            z_crop_front=self.config.z_crop_front,
-            z_crop_back=self.config.z_crop_back,
-        )
+            self.dataset = FWLDataset(
+                voxel_dirs=voxel_dirs,
+                annotation_dirs=annotation_dirs,
+                target_size=self.config.target_size,
+                downsample_z=self.config.downsample_z,
+                divide=1,
+                y_crop_top=self.config.y_crop_top,
+                y_crop_bottom=self.config.y_crop_bottom,
+                z_crop_front=self.config.z_crop_front,
+                z_crop_back=self.config.z_crop_back,
+            )
 
         print(f"Found {len(self.dataset)} samples")
 

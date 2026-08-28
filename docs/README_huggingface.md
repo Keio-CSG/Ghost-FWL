@@ -48,10 +48,10 @@ The wds variants live next to the original files and share the epoch loop, loss 
 
 | | directory version | WebDataset version |
 | --- | --- | --- |
-| YAML | `configs/config_{pretrain,train,test}.yaml` | `configs/config_{pretrain,train,test}_wds.yaml` |
-| scripts | `scripts/run_train.py` / `run_test.py` | `scripts/run_train_wds.py` / `run_test_wds.py` |
+| YAML | `configs/config_{pretrain,train,test,estimate}.yaml` | `configs/config_{pretrain,train,test,estimate}_wds.yaml` |
+| scripts | `scripts/run_train.py` / `run_test.py` / `run_estimate.py` | `scripts/run_train_wds.py` / `run_test_wds.py` / `run_estimate_wds.py` |
 | dataset | `src/data/dataset_fwl.py`, `dataset_fwl_mae.py` | `src/data/dataset_fwl_wds.py`, `dataset_fwl_mae_wds.py` |
-| shard resolution / split | – | `src/data/wds_utils.py`, `wds_fetch.py` |
+| shard resolution / split | – | `src/data/wds_utils.py`, `wds_fetch.py`, `wds_raw.py` |
 
 Keys specific to the wds YAMLs:
 
@@ -100,6 +100,37 @@ uv run python scripts/run_test_wds.py --config configs/config_test_wds.yaml
 ```
 
 Set `checkpoint_path` in the YAML. Add `wds_max_shards: 1` for a quick end-to-end check.
+
+## Estimate
+```bash
+uv run python scripts/run_estimate_wds.py --config configs/config_estimate_wds.yaml
+```
+
+Sliding-window inference on the frames selected by `test_wds_groups`; writes
+`{scene}_{hist}_{frame_id}_prediction_voxel.b2` to `output_dir`, the same layout as
+`scripts/run_estimate.py`, so `vis_pcd_batch.py` / `evaluate_pcd_batch.py` consume it as-is.
+
+## Visualize
+- `vis_pred.py` accepts a wds config directly (samples are streamed in order; use
+  `test_wds_groups` to pick a hist and `--frame_id` to jump):
+```bash
+uv run python src/visualize/vis_pred.py --config configs/config_test_wds.yaml
+```
+- `vis_pcd.py`, `vis_pcd_batch.py`, `evaluate_pcd_batch.py` and
+  `interactive_histogram_viewer.py` work on `.b2` files in the directory layout of
+  [README_dataset.md](README_dataset.md). Extract the groups you need from the shards
+  first, then use them unchanged:
+```bash
+# ghost: <out>/<scene>/{data,annotation_v1,annotation_v1_expand}/<hist>/...
+uv run python scripts/extract_wds.py --config ghost --groups scene009/hist002 \
+    --output /path/to/ghost_dataset
+# mae:   <out>/<category>/<session>/*_voxel.b2 and <out>/<category>/peaks/<session>/*_peak.npy
+uv run python scripts/extract_wds.py --config mae --groups ghost/20251014142232_voxel_b2 \
+    --output /path/to/mae_dataset
+```
+`--root` defaults to `hf://ryhara/Ghost-FWL` (add `--cache-dir` to keep the shards);
+pass a local shard directory to extract from a copy. `--members voxel.b2` restricts
+what is written.
 
 ## Reading shards without the training code
 

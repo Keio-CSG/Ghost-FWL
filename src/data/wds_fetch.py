@@ -9,7 +9,7 @@ Run as a standalone script (not `-m`) by src.data.wds_utils._hf_resolve so that 
 
 import shutil
 import sys
-from typing import Optional
+from typing import BinaryIO, Optional
 
 
 def fetch_and_cat(repo_id: str, filename: str, cache_dir: str) -> None:
@@ -22,7 +22,11 @@ def fetch_and_cat(repo_id: str, filename: str, cache_dir: str) -> None:
 
 
 def stream_and_cat(
-    repo_id: str, filename: str, out=None, max_retries: int = 20, chunk: int = 1 << 20
+    repo_id: str,
+    filename: str,
+    out: Optional[BinaryIO] = None,
+    max_retries: int = 20,
+    chunk: int = 1 << 20,
 ) -> int:
     """`pipe:` helper: stream the shard over HTTP, resuming with Range after any drop.
 
