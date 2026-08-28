@@ -4,8 +4,6 @@ configs:
   - config_name: ghost
     data_files: "ghost/*.tar"
     default: true
-  - config_name: mae
-    data_files: "mae/*.tar"
 tags:
   - full-waveform-lidar
   - lidar
@@ -114,8 +112,13 @@ With `datasets`:
 ```python
 from datasets import load_dataset
 
-dataset = load_dataset("ryhara/Ghost-FWL", "mae", streaming=True)
+dataset = load_dataset("ryhara/Ghost-FWL", "ghost", streaming=True)
 ```
+
+Only the `ghost` config is registered for `datasets` / the Dataset Viewer. The
+`mae` shards contain `<key>.peaks.npy` object arrays, which `datasets` refuses to
+decode (`allow_pickle=False`), so read `mae/*.tar` with `webdataset` directly
+(above) or with the training-code loader.
 
 Each `<config>/manifest.json` records the sample count, shard list, and any
 files excluded during conversion. `<config>/shard_index.json` maps every shard to

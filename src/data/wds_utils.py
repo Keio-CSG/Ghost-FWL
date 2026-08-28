@@ -17,6 +17,8 @@ import hashlib
 import json
 import os
 import pathlib
+import shutil
+import sys
 import tarfile
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
@@ -117,7 +119,7 @@ def _read_json(path: pathlib.Path) -> Optional[Dict]:
 
 
 def _hf_resolve(repo_id: str, config: str, cache_dir: Optional[str]) -> ShardSource:
-    from huggingface_hub import HfFolder, hf_hub_download, hf_hub_url
+    from huggingface_hub import get_token, hf_hub_download, hf_hub_url
 
     manifest_path = hf_hub_download(
         repo_id, f"{config}/{MANIFEST_FILENAME}", repo_type="dataset", cache_dir=cache_dir
@@ -133,13 +135,29 @@ def _hf_resolve(repo_id: str, config: str, cache_dir: Optional[str]) -> ShardSou
         log_warning(f"{repo_id}: {config}/{SHARD_INDEX_FILENAME} not found, reading all shards")
 
     shard_names = list(manifest.get("shards", []))
-    token = HfFolder.get_token() or os.environ.get("HF_TOKEN")
+    token = get_token() or os.environ.get("HF_TOKEN")
+    if token:
+        # Pass the token to curl via the environment (inherited by DataLoader workers)
+        # so it never appears in the command line, `ps`, or tracebacks.
+        os.environ["HF_TOKEN"] = token
     urls = []
     for name in shard_names:
-        url = hf_hub_url(repo_id, f"{config}/{name}", repo_type="dataset")
-        if token:
-            # curl through a pipe so private repos work; wds handles "pipe:" urls natively
-            url = f"pipe:curl -s -L -H 'Authorization: Bearer {token}' '{url}'"
+        if cache_dir:
+            # Robust path: download the shard into the HF cache (resumable, sha256-verified,
+            # reused across epochs/runs) and cat it. A mid-stream network drop is retried by
+            # hf_hub_download instead of corrupting the tar stream.
+            url = (
+                f"pipe:{sys.executable} -m src.data.wds_utils fetch "
+                f"{repo_id} {config}/{name} '{cache_dir}'"
+            )
+        else:
+            url = hf_hub_url(repo_id, f"{config}/{name}", repo_type="dataset")
+            # Stream through curl; wds handles "pipe:" urls natively. -f fails on HTTP errors
+            # instead of feeding an error page to tar; --retry only covers connection
+            # failures — a drop mid-stream still surfaces as "unexpected end of data"
+            # (set wds_cache_dir for the resumable path above).
+            auth = " -H \"Authorization: Bearer $HF_TOKEN\"" if token else ""
+            url = f"pipe:curl -sfL --retry 5 --retry-all-errors --retry-delay 2{auth} '{url}'"
         urls.append(url)
     return ShardSource(
         config=config,
@@ -333,3 +351,19 @@ def create_wds_loader(
         worker_init_fn=seed_worker,
         **kwargs,
     )
+
+
+def _fetch_and_cat(repo_id: str, filename: str, cache_dir: str) -> None:
+    """`pipe:` helper for hf:// shards: download (resumable, cached) then stream to stdout."""
+    from huggingface_hub import hf_hub_download
+
+    path = hf_hub_download(repo_id, filename, repo_type="dataset", cache_dir=cache_dir)
+    with open(path, "rb") as f:
+        shutil.copyfileobj(f, sys.stdout.buffer, length=1 << 20)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 5 and sys.argv[1] == "fetch":
+        _fetch_and_cat(sys.argv[2], sys.argv[3], sys.argv[4])
+    else:
+        sys.exit(f"usage: {sys.argv[0]} fetch <repo_id> <path_in_repo> <cache_dir>")

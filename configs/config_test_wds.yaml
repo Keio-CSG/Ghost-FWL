@@ -4,7 +4,7 @@
 seed: 42
 batch_size: 8 # Reduced batch size for 3D data
 device: cuda:0
-checkpoint_path: ''
+checkpoint_path: '/mnt/nas3/hara/cvpr2026_checkpoint/cvpr26_ours.pth'
 use_threshold_prediction: true
 prediction_threshold: 0.5
 
@@ -46,10 +46,10 @@ drop_path_rate: 0.2
 ###########################################################
 # Input - WebDataset shards (ryhara/Ghost-FWL, config: ghost)
 ###########################################################
-# Local or "hf://ryhara/Ghost-FWL"
-wds_root: /path/to/Ghost-FWL-wds
+# Local /path/to/Ghost-FWL-wds or "hf://ryhara/Ghost-FWL"
+wds_root: hf://ryhara/Ghost-FWL
 wds_annotation_key: annotation_expand
-wds_cache_dir: ''
+wds_cache_dir: ''  # Recommended for hf:// roots: shards are downloaded to this dir (resumable, sha256-verified) and read locally
 
 test_wds_groups:
 - scene009/hist002

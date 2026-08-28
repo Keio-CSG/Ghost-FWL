@@ -68,10 +68,10 @@ scheduler: ''
 ###########################################################
 # Input - WebDataset shards (ryhara/Ghost-FWL, config: mae)
 ###########################################################
-# Local or "hf://ryhara/Ghost-FWL"
-wds_root: /path/to/Ghost-FWL-wds
+# Local /path/to/Ghost-FWL-wds or "hf://ryhara/Ghost-FWL"
+wds_root: hf://ryhara/Ghost-FWL
 wds_shuffle_buffer: 16
-wds_cache_dir: ''
+wds_cache_dir: ''  # Recommended for hf:// roots: shards are downloaded to this dir (resumable, sha256-verified) and read locally
 
 # Group selectors: "ghost", "normal", "ghost/20251014142232_voxel_b2", "normal/2025*"
 train_wds_groups:
