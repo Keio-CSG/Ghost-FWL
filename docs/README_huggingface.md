@@ -149,4 +149,4 @@ for sample in wds.WebDataset(urls, shardshuffle=False):
 ```
 
 For a gated repo pass the token, e.g. `pipe:curl -sfL -H "Authorization: Bearer $HF_TOKEN" <url>`,
-or use `src.data.wds_utils.resolve_shards("hf://ryhara/Ghost-FWL", "ghost").urls`.
+or use `src.wds.resolve_shards("hf://ryhara/Ghost-FWL", "ghost").urls`.
