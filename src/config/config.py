@@ -187,11 +187,11 @@ def load_config_from_yaml(yaml_file: str) -> TrainingConfig | TestConfig:
     elif config_data["config_name"] == "test":
         return TestConfig(**config_data)
     elif config_data["config_name"] == "train_wds":
-        from src.config.config_wds import WDSTrainingConfig
+        from src.wds.config import WDSTrainingConfig
 
         return WDSTrainingConfig(**config_data)
     elif config_data["config_name"] == "test_wds":
-        from src.config.config_wds import WDSTestConfig
+        from src.wds.config import WDSTestConfig
 
         return WDSTestConfig(**config_data)
     else:

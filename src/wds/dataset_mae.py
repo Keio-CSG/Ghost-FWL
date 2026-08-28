@@ -12,14 +12,14 @@ Groups are "<category>/<session>" ("ghost/20251014142232_voxel_b2", "normal", ..
 import json
 from typing import Any, Dict, List, Optional, Sequence
 
-from src.data.dataset_fwl_wds import FWLWDSDataset
-from src.data.transforms_wds import (
+from src.utils.log import log_info
+from src.wds.dataset import FWLWDSDataset
+from src.wds.transforms import (
     PeaksToTensors,
     crop_peak_tensors,
     decode_b2,
     decode_peaks,
 )
-from src.utils.log import log_info
 
 
 class FWLMAEPWDSDataset(FWLWDSDataset):

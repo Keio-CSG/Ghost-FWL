@@ -9,13 +9,15 @@ from typing import Any, Dict
 
 import torch
 
-from src.config import WDSTestConfig, load_config_from_yaml
+from src.config import load_config_from_yaml
 from src.config.constants import LABEL_MAP
-from src.data import FWLWDSDataset, voxel_collate_fn
-from src.data.wds_utils import create_wds_loader
+from src.data import voxel_collate_fn
 from src.training.fwl_mae_finetune_test import test_model_voxel_mae_finetune
 from src.utils import get_model, set_seed, set_wandb
 from src.utils.log import log_info, log_warning
+from src.wds.config import WDSTestConfig
+from src.wds.dataset import FWLWDSDataset
+from src.wds.shards import create_wds_loader
 
 
 def build_test_dataset(config: WDSTestConfig) -> FWLWDSDataset:

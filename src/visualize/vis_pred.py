@@ -21,9 +21,10 @@ from sklearn.metrics import (
 
 from src.config import TestConfig, TrainingConfig, load_config_from_yaml
 from src.config.constants import CLASS_COLORS, LABEL_MAP
-from src.data import FWLDataset, FWLWDSDataset
-from src.data.wds_raw import WDSSequentialAccess
+from src.data import FWLDataset
 from src.utils import get_model, plot_temporal_histogram, select_random_point
+from src.wds.dataset import FWLWDSDataset
+from src.wds.raw import WDSSequentialAccess
 
 # Suppress specific sklearn warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")

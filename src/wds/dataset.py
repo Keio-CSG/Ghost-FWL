@@ -13,7 +13,7 @@ Differences from the directory-based dataset:
   * data are selected by *group* selectors ("scene003", "scene003/hist012",
     "scene00[1-5]/hist*") instead of directory lists.
   * train/valid splitting and `divide` subsampling are deterministic functions of
-    the sample key (see wds_utils.in_split / keep_by_divide).
+    the sample key (see shards.in_split / keep_by_divide).
 """
 
 import json
@@ -23,8 +23,8 @@ import webdataset as wds
 from torch.utils.data import IterableDataset
 
 from src.config import LABEL_MAP
-from src.data.transforms_wds import VoxelPreprocess, decode_b2
-from src.data.wds_utils import (
+from src.utils.log import log_info
+from src.wds.shards import (
     ShardSource,
     estimate_length,
     group_of,
@@ -34,7 +34,7 @@ from src.data.wds_utils import (
     resolve_shards,
     select_shards,
 )
-from src.utils.log import log_info
+from src.wds.transforms import VoxelPreprocess, decode_b2
 
 ANNOTATION_KEYS = ("annotation_expand", "annotation")
 
@@ -140,7 +140,7 @@ class FWLWDSDataset(IterableDataset):
         if self._length is None:
             raise TypeError(
                 "Dataset length is unknown (no shard_index.json and a group filter is set). "
-                "Create it with build_shard_index() in src/data/wds_utils.py."
+                "Create it with build_shard_index() in src/wds/shards.py."
             )
         return self._length
 

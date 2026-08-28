@@ -134,14 +134,14 @@ def _hf_resolve(repo_id: str, config: str, cache_dir: Optional[str]) -> ShardSou
         log_warning(f"{repo_id}: {config}/{SHARD_INDEX_FILENAME} not found, reading all shards")
 
     shard_names = list(manifest.get("shards", []))
-    # Shards are read through a "pipe:" helper (src/data/wds_fetch.py):
+    # Shards are read through a "pipe:" helper (src/wds/fetch.py):
     #   fetch  (cache_dir set)   hf_hub_download -> cat. Resumable, sha256-verified, reused
     #                            across epochs/runs; costs disk (~1 GB per shard).
     #   stream (cache_dir unset) HTTP streaming with Range-resume. No disk; a network drop
     #                            mid-shard reconnects at the last byte received instead of
     #                            truncating the tar (curl) or restarting it (curl --retry).
     mode, cache_arg = ("fetch", f" '{cache_dir}'") if cache_dir else ("stream", "")
-    helper = pathlib.Path(__file__).with_name("wds_fetch.py")  # standalone: no package import
+    helper = pathlib.Path(__file__).with_name("fetch.py")  # standalone: no package import
     urls = [
         f"pipe:{sys.executable} {helper} {mode} {repo_id} {config}/{name}{cache_arg}"
         for name in shard_names
@@ -265,7 +265,7 @@ def select_shards(
             log_warning(
                 f"{source.root}/{source.config}: no {SHARD_INDEX_FILENAME}; all "
                 f"{len(source.urls)} shards will be scanned and the dataset length is unknown. "
-                "Create it with build_shard_index() in src/data/wds_utils.py."
+                "Create it with build_shard_index() in src/wds/shards.py."
             )
             return list(source.urls), None
         return list(source.urls), source.manifest.get("num_samples")

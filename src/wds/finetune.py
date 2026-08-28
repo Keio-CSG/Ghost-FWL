@@ -10,9 +10,8 @@ from pprint import pprint
 
 import torch
 
-from src.config import WDSTrainingConfig, load_config_from_yaml
-from src.data import FWLWDSDataset, voxel_collate_fn
-from src.data.wds_utils import create_wds_loader
+from src.config import load_config_from_yaml
+from src.data import voxel_collate_fn
 from src.training.fwl_mae_finetune import (
     load_pretrained_ghost_fwl_pretrain,
     train_epoch,
@@ -27,6 +26,9 @@ from src.utils import (
     set_wandb,
 )
 from src.utils.log import log_info, log_warning
+from src.wds.config import WDSTrainingConfig
+from src.wds.dataset import FWLWDSDataset
+from src.wds.shards import create_wds_loader
 
 
 def build_finetune_datasets(config: WDSTrainingConfig) -> tuple[FWLWDSDataset, FWLWDSDataset]:

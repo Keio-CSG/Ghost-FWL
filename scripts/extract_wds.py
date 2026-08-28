@@ -23,8 +23,8 @@ from typing import Dict
 
 from tqdm import tqdm
 
-from src.data.wds_raw import FWLWDSRawDataset
 from src.utils.log import log_info
+from src.wds.raw import FWLWDSRawDataset
 
 
 def target_paths(config: str, meta: Dict, out: pathlib.Path) -> Dict[str, pathlib.Path]:

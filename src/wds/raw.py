@@ -14,9 +14,9 @@ from typing import Any, Dict, Iterator, List, Optional, Sequence
 import webdataset as wds
 from torch.utils.data import IterableDataset
 
-from src.data.transforms_wds import DownsampleZ, YCrop, ZCrop, decode_b2
-from src.data.wds_utils import group_of, match_group, resolve_shards, select_shards
 from src.utils.log import log_info
+from src.wds.shards import group_of, match_group, resolve_shards, select_shards
+from src.wds.transforms import DownsampleZ, YCrop, ZCrop, decode_b2
 
 
 class FWLWDSRawDataset(IterableDataset):

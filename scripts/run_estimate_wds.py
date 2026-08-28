@@ -5,7 +5,7 @@ Same as scripts/run_estimate.py but reads frames selected by `test_wds_groups` f
 `output_dir` as `{scene}_{hist}_{frame_id}_prediction_voxel.b2`, the layout expected by
 src/visualize/vis_pcd_batch.py and evaluate_pcd_batch.py.
 
-    uv run python scripts/run_estimate_wds.py --config configs/config_estimate_wds.yaml
+    uv run python scripts/run_estimate_wds.py --config configs/wds/estimate.yaml
 """
 
 import argparse
@@ -18,10 +18,11 @@ import torch
 from run_estimate import SlidingWindowInference, upsampling_prediction
 from tqdm import tqdm
 
-from src.config import WDSTestConfig, load_config_from_yaml
-from src.data.wds_raw import FWLWDSRawDataset
+from src.config import load_config_from_yaml
 from src.utils import get_model, save_blosc2, set_seed
 from src.utils.log import log_info, log_warning
+from src.wds.config import WDSTestConfig
+from src.wds.raw import FWLWDSRawDataset
 
 
 def run_estimation_wds(config_path: str) -> None:

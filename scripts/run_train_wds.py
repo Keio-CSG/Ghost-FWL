@@ -1,10 +1,12 @@
-"""Train on the WebDataset shards (ryhara/Ghost-FWL). Use configs/config_*_wds.yaml."""
+"""Train on the WebDataset shards (ryhara/Ghost-FWL). Use configs/wds/{pretrain,train}.yaml."""
 
 import argparse
 import os
 
-from src.config import WDSTrainingConfig, load_config_from_yaml
-from src.training import train_fwl_mae_finetune_wds, train_fwl_mae_pretrain_wds
+from src.config import load_config_from_yaml
+from src.wds.config import WDSTrainingConfig
+from src.wds.finetune import train_fwl_mae_finetune_wds
+from src.wds.pretrain import train_fwl_mae_pretrain_wds
 
 
 def arg_parse() -> argparse.Namespace:

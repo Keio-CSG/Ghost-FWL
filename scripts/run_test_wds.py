@@ -1,9 +1,10 @@
-"""Evaluate on the WebDataset shards (ryhara/Ghost-FWL). Use configs/config_test_wds.yaml."""
+"""Evaluate on the WebDataset shards (ryhara/Ghost-FWL). Use configs/wds/test.yaml."""
 
 import argparse
 
-from src.config import WDSTestConfig, load_config_from_yaml
-from src.training import test_fwl_mae_finetune_wds
+from src.config import load_config_from_yaml
+from src.wds.config import WDSTestConfig
+from src.wds.test import test_fwl_mae_finetune_wds
 
 
 def arg_parse() -> argparse.Namespace:

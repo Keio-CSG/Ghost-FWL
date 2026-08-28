@@ -9,9 +9,8 @@ from pprint import pprint
 
 import torch
 
-from src.config import WDSTrainingConfig, load_config_from_yaml
-from src.data import FWLMAEPWDSDataset, fwl_mae_collate_fn
-from src.data.wds_utils import create_wds_loader
+from src.config import load_config_from_yaml
+from src.data import fwl_mae_collate_fn
 from src.training.fwl_mae_pretrain import save_model, train_epoch, validation_epoch
 from src.utils import (
     create_optimizer,
@@ -23,6 +22,9 @@ from src.utils import (
     set_seed,
     set_wandb,
 )
+from src.wds.config import WDSTrainingConfig
+from src.wds.dataset_mae import FWLMAEPWDSDataset
+from src.wds.shards import create_wds_loader
 
 
 def build_pretrain_datasets(

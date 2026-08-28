@@ -1,10 +1,10 @@
 """`pipe:` helpers that feed hf:// WebDataset shards to the wds pipeline.
 
-Run as a standalone script (not `-m`) by src.data.wds_utils._hf_resolve so that the
+Run as a standalone script (not `-m`) by src.wds.shards._hf_resolve so that the
 `src.data` package (torch, datasets, ...) is not imported in every shard subprocess:
 
-    python src/data/wds_fetch.py fetch  <repo_id> <path_in_repo> <cache_dir>
-    python src/data/wds_fetch.py stream <repo_id> <path_in_repo>
+    python src/wds/fetch.py fetch  <repo_id> <path_in_repo> <cache_dir>
+    python src/wds/fetch.py stream <repo_id> <path_in_repo>
 """
 
 import shutil

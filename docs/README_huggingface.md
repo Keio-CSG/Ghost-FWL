@@ -44,14 +44,17 @@ the loaders below.
 
 ## Config
 
-The wds variants live next to the original files and share the epoch loop, loss and collate:
+All WebDataset code lives in `src/wds/` (and `configs/wds/`), separate from the
+directory-based implementation; the epoch loop, loss and collate are shared:
 
 | | directory version | WebDataset version |
 | --- | --- | --- |
-| YAML | `configs/config_{pretrain,train,test,estimate}.yaml` | `configs/config_{pretrain,train,test,estimate}_wds.yaml` |
+| YAML | `configs/config_{pretrain,train,test,estimate}.yaml` | `configs/wds/{pretrain,train,test,estimate}.yaml` |
 | scripts | `scripts/run_train.py` / `run_test.py` / `run_estimate.py` | `scripts/run_train_wds.py` / `run_test_wds.py` / `run_estimate_wds.py` |
-| dataset | `src/data/dataset_fwl.py`, `dataset_fwl_mae.py` | `src/data/dataset_fwl_wds.py`, `dataset_fwl_mae_wds.py` |
-| shard resolution / split | – | `src/data/wds_utils.py`, `wds_fetch.py`, `wds_raw.py` |
+| dataset | `src/data/dataset_fwl.py`, `dataset_fwl_mae.py` | `src/wds/dataset.py`, `dataset_mae.py` |
+| shard resolution / split | – | `src/wds/shards.py`, `fetch.py`, `raw.py` |
+| training / test loops | `src/training/fwl_mae_*.py` | `src/wds/{pretrain,finetune,test}.py` (dataset construction only; epoch loops are shared) |
+| config | `src/config/config.py` | `src/wds/config.py` |
 
 Keys specific to the wds YAMLs:
 
@@ -86,24 +89,24 @@ config is ~260 GB) or copy the shards locally and point `wds_root` at the direct
 
 ## Pretrain
 ```bash
-uv run python scripts/run_train_wds.py --config configs/config_pretrain_wds.yaml
+uv run python scripts/run_train_wds.py --config configs/wds/pretrain.yaml
 ```
 
 ## Train
 ```bash
-uv run python scripts/run_train_wds.py --config configs/config_train_wds.yaml
+uv run python scripts/run_train_wds.py --config configs/wds/train.yaml
 ```
 
 ## Test
 ```bash
-uv run python scripts/run_test_wds.py --config configs/config_test_wds.yaml
+uv run python scripts/run_test_wds.py --config configs/wds/test.yaml
 ```
 
 Set `checkpoint_path` in the YAML. Add `wds_max_shards: 1` for a quick end-to-end check.
 
 ## Estimate
 ```bash
-uv run python scripts/run_estimate_wds.py --config configs/config_estimate_wds.yaml
+uv run python scripts/run_estimate_wds.py --config configs/wds/estimate.yaml
 ```
 
 Sliding-window inference on the frames selected by `test_wds_groups`; writes
@@ -114,7 +117,7 @@ Sliding-window inference on the frames selected by `test_wds_groups`; writes
 - `vis_pred.py` accepts a wds config directly (samples are streamed in order; use
   `test_wds_groups` to pick a hist and `--frame_id` to jump):
 ```bash
-uv run python src/visualize/vis_pred.py --config configs/config_test_wds.yaml
+uv run python src/visualize/vis_pred.py --config configs/wds/test.yaml
 ```
 - `vis_pcd.py`, `vis_pcd_batch.py`, `evaluate_pcd_batch.py` and
   `interactive_histogram_viewer.py` work on `.b2` files in the directory layout of
