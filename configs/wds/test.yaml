@@ -4,7 +4,7 @@
 seed: 42
 batch_size: 8 # Reduced batch size for 3D data
 device: cuda:0
-checkpoint_path: '/mnt/nas3/hara/cvpr2026_checkpoint/cvpr26_ours.pth'
+checkpoint_path: ''
 use_threshold_prediction: true
 prediction_threshold: 0.5
 
